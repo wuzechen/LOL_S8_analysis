@@ -4,6 +4,7 @@ import datetime
 import cassiopeia as cass
 from cassiopeia.core import Summoner, MatchHistory, Match
 from cassiopeia.data import Queue, Patch
+import setting as setting
 
 
 def filter_match_history(summoner, patch):
@@ -19,7 +20,7 @@ def collect_matches():
     region = "JP"
 
     summoner = Summoner(name=initial_summoner_name, region=region)
-    patch_720 = Patch.from_str("7.22", region=region)
+    patch_720 = Patch.from_str("7.20", region=region)
 
     unpulled_summoner_ids = SortedList([summoner.id])
     pulled_summoner_ids = SortedList()
@@ -50,6 +51,6 @@ def collect_matches():
 
 
 if __name__ == "__main__":
-    cass.set_riot_api_key("")  # This overrides the value set in your configuration/settings.
+    cass.set_riot_api_key(setting.apikey)  # This overrides the value set in your configuration/settings.
     cass.set_default_region("JP")
     collect_matches()
