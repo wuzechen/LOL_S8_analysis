@@ -1,0 +1,27 @@
+{
+  "global": {
+    "default_region": null
+  },
+
+  "pipeline": {
+    "Cache": {},
+
+    "DDragon": {},
+
+    "SimpleKVDiskStore": {
+    "package": "cassiopeia_diskstore",
+    "path": "/absolute/path/to/store/data/"
+  },
+
+    "RiotAPI": {
+      "api_key": "apikey"
+    }
+  },
+
+  "logging": {
+    "print_calls": true,
+    "print_riot_api_key": false,
+    "default": "WARNING",
+    "core": "WARNING"
+  }
+}
