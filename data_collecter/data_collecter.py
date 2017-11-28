@@ -36,6 +36,8 @@ def collect_matches():
                "red_ban0", "red_ban1", "red_ban2", "red_ban3", "red_ban4",
                "blue_ban0", "blue_ban1", "blue_ban2", "blue_ban3", "blue_ban4",]
 
+    roles = ["top", "jungle", "mid", "adc", "support"]
+
     while unpulled_summoner_ids:
         # Get a random summoner from our list of unpulled summoners and pull their match history
         new_summoner_id = random.choice(unpulled_summoner_ids)
@@ -83,9 +85,9 @@ def collect_matches():
                     "blue_first_tower": blue.first_tower,
                     "blue_dominion_score": blue.dominion_score}
             for index in range(len(red.bans)):
-                data["red_ban" + str(index)] = red.bans[index] is not None and red.bans[index].id or "null"
+                data["red_ban" + str(index)] = red.bans[index] is not None and red.bans[index].id or "-1"
             for index in range(len(blue.bans)):
-                data["blue_ban" + str(index)] = blue.bans[index] is not None and blue.bans[index].id or "null"
+                data["blue_ban" + str(index)] = blue.bans[index] is not None and blue.bans[index].id or "-1"
             for participant in red.participants:
                 role = str(participant.lane) + str(participant.role)
                 data["red_pick_" + role] = \

@@ -8,13 +8,8 @@
 
     "DDragon": {},
 
-    "SimpleKVDiskStore": {
-    "package": "cassiopeia_diskstore",
-    "path": "/absolute/path/to/store/data/"
-  },
-
     "RiotAPI": {
-      "api_key": "apikey"
+      "api_key": "RGAPI-9d5a304b-214e-4b99-b811-c6737236a0fb"
     }
   },
 
