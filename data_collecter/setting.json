@@ -9,8 +9,38 @@
     "DDragon": {},
 
     "RiotAPI": {
-      "api_key": "RGAPI-9d5a304b-214e-4b99-b811-c6737236a0fb"
-    }
+      "api_key": "",
+      "limiting_share": 1.0,
+      "request_error_handling": {
+          "404": {
+              "strategy": "throw"
+          },
+          "429": {
+              "service": {
+                  "strategy": "exponential_backoff",
+                  "initial_backoff": 1.0,
+                  "backoff_factor": 2.0,
+                  "max_attempts": 4
+              },
+              "method": {
+                  "strategy": "retry_from_headers",
+                  "max_attempts": 5
+              },
+              "application": {
+                  "strategy": "retry_from_headers",
+                  "max_attempts": 5
+              }
+          },
+          "500": {
+              "strategy": "throw"
+          },
+          "503": {
+              "strategy": "throw"
+          },
+          "timeout": {
+              "strategy": "throw"
+          }
+      }
   },
 
   "logging": {
