@@ -1,2 +1,3 @@
 data_collecter/setting.json
 .idea/
+*.pyc
