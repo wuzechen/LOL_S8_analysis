@@ -102,7 +102,8 @@ def collect_matches():
                     "blue_first_tower": getattr(blue, "first_tower", False),
                     "blue_dominion_score": getattr(blue, "dominion_score", 0),
                     }
-            timeline_data = {}
+            timeline_data = {"match_id": new_match_id}
+            event_data = {}
             for index in range(len(red.bans)):
                 data["red_ban" + str(index)] = red.bans[index] is not None and red.bans[index].id or -1
             for index in range(len(blue.bans)):
@@ -231,6 +232,17 @@ def collect_matches():
                 if xp_diff_per_min_deltas is not None:
                     for time, value in xp_per_min_deltas.items():
                         data["red_player_xp_diff_per_min_deltas_" + time_convert(time)+ "_" + role] = value
+                frames = getattr(participant.timeline, "frames", None)
+                if frames is not None:
+                    for index, frame in enumerate(frames):
+                        timeline_data["red_" + role + "_creep_score_" + str(index)] = getattr(frame, "creep_score", 0)
+                        timeline_data["red_" + role + "_current_gold_" + str(index)] = getattr(frame, "current_gold", 0)
+                        timeline_data["red_" + role + "_gold_earned_" + str(index)] = getattr(frame, "gold_earned", 0)
+                        timeline_data["red_" + role + "_level_" + str(index)] = getattr(frame, "level", 0)
+                        position = getattr(frame, "position", None)
+                        if position is not None:
+                            timeline_data["red_" + role + "_positionX_" + str(index)] = position.x
+                            timeline_data["red_" + role + "_positionY_" + str(index)] = position.y
             for participant in blue.participants:
                 role = get_role(str(getattr(participant, "lane", "null")) + str(getattr(participant, "role", "null")))
                 if role == "null":
@@ -355,7 +367,17 @@ def collect_matches():
                 if xp_diff_per_min_deltas is not None:
                     for time, value in xp_per_min_deltas.items():
                         data["blue_player_xp_diff_per_min_deltas_" + time_convert(time)+ "_" + role] = value
-
+                frames = getattr(participant.timeline, "frames", None)
+                if frames is not None:
+                    for index, frame in enumerate(frames):
+                        timeline_data["blue_" + role + "_creep_score_" + str(index)] = getattr(frame, "creep_score", 0)
+                        timeline_data["blue_" + role + "_current_gold_" + str(index)] = getattr(frame, "current_gold", 0)
+                        timeline_data["blue_" + role + "_gold_earned_" + str(index)] = getattr(frame, "gold_earned", 0)
+                        timeline_data["blue_" + role + "_level_" + str(index)] = getattr(frame, "level", 0)
+                        position = getattr(frame, "position", None)
+                        if position is not None:
+                            timeline_data["blue_" + role + "_positionX_" + str(index)] = position.x
+                            timeline_data["blue_" + role + "_positionY_" + str(index)] = position.y
             # find next player
             for participant in new_match.participants:
                 if participant.summoner.id not in pulled_summoner_ids and participant.summoner.id not in unpulled_summoner_ids:
@@ -363,12 +385,15 @@ def collect_matches():
             unpulled_match_ids.remove(new_match_id)
             pulled_match_ids.add(new_match_id)
 
-            # Write the data to the csv file
-            datas = [data]
+            # Write match data to csv file
             with open("./../data/match_data.csv", "a", newline="") as f:
-                writer = csv.DictWriter(f, csv_header.headers)
-                for row in datas:
-                    writer.writerow(row)
+                writer = csv.DictWriter(f, csv_header.data_headers)
+                writer.writerow(data)
+            # Write time line data to csv file
+            with open("./../data/timeline_data.csv", "a", newline="") as f:
+                writer = csv.DictWriter(f, csv_header.timeline_data_headers)
+                writer.writerow(timeline_data)
+
 
 
 if __name__ == "__main__":
