@@ -1140,6 +1140,7 @@ data_headers = ["match_id", "creation", "duration", "patch", "region", "game_typ
            ]
 
 timeline_data_headers = [
+    "match_id",
     "red_top_creep_score_0",
     "red_top_current_gold_0",
     "red_top_gold_earned_0",
