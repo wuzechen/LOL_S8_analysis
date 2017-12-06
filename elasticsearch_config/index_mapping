@@ -1,0 +1,3530 @@
+PUT /lol_match_data
+{
+  "settings": {
+    "index": {
+      "number_of_shards": "5",
+      "number_of_replicas": "1",
+      "refresh_interval": "5s"
+    },
+    "index.mapping.total_fields.limit": 2000
+  },
+  "mappings": {
+    "match": {
+      "properties": {
+        "match_id": {
+          "type": "text"
+        },
+        "creation": {
+          "type": "date"
+        },
+        "duration": {
+          "type": "float"
+        },
+        "patch": {
+          "type": "text"
+        },
+        "region": {
+          "type": "text"
+        },
+        "game_type": {
+          "type": "text"
+        },
+        "win": {
+          "type": "text"
+        },
+        "red_win": {
+          "type": "boolean"
+        },
+        "red_baron_kills": {
+          "type": "float"
+        },
+        "red_dragon_kills": {
+          "type": "float"
+        },
+        "red_rift_herald_kills": {
+          "type": "float"
+        },
+        "red_inhibitor_kills": {
+          "type": "float"
+        },
+        "red_tower_kills": {
+          "type": "float"
+        },
+        "red_first_baron": {
+          "type": "boolean"
+        },
+        "red_first_dragon": {
+          "type": "boolean"
+        },
+        "red_first_blood": {
+          "type": "boolean"
+        },
+        "red_first_inhibitor": {
+          "type": "boolean"
+        },
+        "red_first_tower": {
+          "type": "boolean"
+        },
+        "red_dominion_score": {
+          "type": "float"
+        },
+        "blue_win": {
+          "type": "boolean"
+        },
+        "blue_baron_kills": {
+          "type": "float"
+        },
+        "blue_dragon_kills": {
+          "type": "float"
+        },
+        "blue_rift_herald_kills": {
+          "type": "float"
+        },
+        "blue_inhibitor_kills": {
+          "type": "float"
+        },
+        "blue_tower_kills": {
+          "type": "float"
+        },
+        "blue_first_baron": {
+          "type": "boolean"
+        },
+        "blue_first_dragon": {
+          "type": "boolean"
+        },
+        "blue_first_blood": {
+          "type": "boolean"
+        },
+        "blue_first_inhibitor": {
+          "type": "boolean"
+        },
+        "blue_first_tower": {
+          "type": "boolean"
+        },
+        "blue_dominion_score": {
+          "type": "float"
+        },
+        "red_ban0": {
+          "type": "text"
+        },
+        "red_ban1": {
+          "type": "text"
+        },
+        "red_ban2": {
+          "type": "text"
+        },
+        "red_ban3": {
+          "type": "text"
+        },
+        "red_ban4": {
+          "type": "text"
+        },
+        "blue_ban0": {
+          "type": "text"
+        },
+        "blue_ban1": {
+          "type": "text"
+        },
+        "blue_ban2": {
+          "type": "text"
+        },
+        "blue_ban3": {
+          "type": "text"
+        },
+        "blue_ban4": {
+          "type": "text"
+        },
+        "red_pick_top": {
+          "type": "text"
+        },
+        "red_player_top": {
+          "type": "text"
+        },
+        "red_player_level_top": {
+          "type": "float"
+        },
+        "red_summoner_spell_d_top": {
+          "type": "float"
+        },
+        "red_summoner_spell_f_top": {
+          "type": "float"
+        },
+        "red_player_kill_top": {
+          "type": "float"
+        },
+        "red_player_deaths_top": {
+          "type": "float"
+        },
+        "red_player_assists_top": {
+          "type": "float"
+        },
+        "red_player_gold_earned_top": {
+          "type": "float"
+        },
+        "red_player_gold_spent_top": {
+          "type": "float"
+        },
+        "red_player_kda_top": {
+          "type": "float"
+        },
+        "red_player_total_minions_killed_top": {
+          "type": "float"
+        },
+        "red_player_turret_kills_top": {
+          "type": "float"
+        },
+        "red_player_inhibitor_kills_top": {
+          "type": "float"
+        },
+        "red_player_killing_sprees_top": {
+          "type": "float"
+        },
+        "red_player_double_kills_top": {
+          "type": "float"
+        },
+        "red_player_triple_kills_top": {
+          "type": "float"
+        },
+        "red_player_quadra_kills_top": {
+          "type": "float"
+        },
+        "red_player_panta_kills_top": {
+          "type": "float"
+        },
+        "red_player_first_blood_assist_top": {
+          "type": "boolean"
+        },
+        "red_player_first_blood_kill_top": {
+          "type": "boolean"
+        },
+        "red_player_first_inhibitor_assist_top": {
+          "type": "boolean"
+        },
+        "red_player_first_inhibitor_kill_top": {
+          "type": "boolean"
+        },
+        "red_player_first_tower_assist_top": {
+          "type": "boolean"
+        },
+        "red_player_first_tower_kill_top": {
+          "type": "boolean"
+        },
+        "red_player_vision_score_top": {
+          "type": "float"
+        },
+        "red_player_vision_wards_bought_in_game_top": {
+          "type": "float"
+        },
+        "red_player_sight_wards_bought_in_game_top": {
+          "type": "float"
+        },
+        "red_player_wards_killed_top": {
+          "type": "float"
+        },
+        "red_player_wards_placed_top": {
+          "type": "float"
+        },
+        "red_player_total_time_crowd_control_dealt_top": {
+          "type": "float"
+        },
+        "red_player_total_damage_dealt_top": {
+          "type": "float"
+        },
+        "red_player_total_damage_dealt_to_champions_top": {
+          "type": "float"
+        },
+        "red_player_total_damage_taken_top": {
+          "type": "float"
+        },
+        "red_player_total_heal_top": {
+          "type": "float"
+        },
+        "red_player_total_units_healed_top": {
+          "type": "float"
+        },
+        "red_player_longest_time_spent_living_top": {
+          "type": "float"
+        },
+        "red_player_neutral_minions_killed_top": {
+          "type": "float"
+        },
+        "red_player_neutral_minions_killed_enemy_jungle_top": {
+          "type": "float"
+        },
+        "red_player_neutral_minions_killed_team_jungle_top": {
+          "type": "float"
+        },
+        "red_player_damage_dealt_to_objectives_top": {
+          "type": "float"
+        },
+        "red_player_damage_dealt_to_turrets_top": {
+          "type": "float"
+        },
+        "red_player_damage_self_mitigated_top": {
+          "type": "float"
+        },
+        "red_pick_jug": {
+          "type": "text"
+        },
+        "red_player_jug": {
+          "type": "text"
+        },
+        "red_player_level_jug": {
+          "type": "float"
+        },
+        "red_summoner_spell_d_jug": {
+          "type": "float"
+        },
+        "red_summoner_spell_f_jug": {
+          "type": "float"
+        },
+        "red_player_kill_jug": {
+          "type": "float"
+        },
+        "red_player_deaths_jug": {
+          "type": "float"
+        },
+        "red_player_assists_jug": {
+          "type": "float"
+        },
+        "red_player_gold_earned_jug": {
+          "type": "float"
+        },
+        "red_player_gold_spent_jug": {
+          "type": "float"
+        },
+        "red_player_kda_jug": {
+          "type": "float"
+        },
+        "red_player_total_minions_killed_jug": {
+          "type": "float"
+        },
+        "red_player_turret_kills_jug": {
+          "type": "float"
+        },
+        "red_player_inhibitor_kills_jug": {
+          "type": "float"
+        },
+        "red_player_killing_sprees_jug": {
+          "type": "float"
+        },
+        "red_player_double_kills_jug": {
+          "type": "float"
+        },
+        "red_player_triple_kills_jug": {
+          "type": "float"
+        },
+        "red_player_quadra_kills_jug": {
+          "type": "float"
+        },
+        "red_player_panta_kills_jug": {
+          "type": "float"
+        },
+        "red_player_first_blood_assist_jug": {
+          "type": "boolean"
+        },
+        "red_player_first_blood_kill_jug": {
+          "type": "boolean"
+        },
+        "red_player_first_inhibitor_assist_jug": {
+          "type": "boolean"
+        },
+        "red_player_first_inhibitor_kill_jug": {
+          "type": "boolean"
+        },
+        "red_player_first_tower_assist_jug": {
+          "type": "boolean"
+        },
+        "red_player_first_tower_kill_jug": {
+          "type": "boolean"
+        },
+        "red_player_vision_score_jug": {
+          "type": "float"
+        },
+        "red_player_vision_wards_bought_in_game_jug": {
+          "type": "float"
+        },
+        "red_player_sight_wards_bought_in_game_jug": {
+          "type": "float"
+        },
+        "red_player_wards_killed_jug": {
+          "type": "float"
+        },
+        "red_player_wards_placed_jug": {
+          "type": "float"
+        },
+        "red_player_total_time_crowd_control_dealt_jug": {
+          "type": "float"
+        },
+        "red_player_total_damage_dealt_jug": {
+          "type": "float"
+        },
+        "red_player_total_damage_dealt_to_champions_jug": {
+          "type": "float"
+        },
+        "red_player_total_damage_taken_jug": {
+          "type": "float"
+        },
+        "red_player_total_heal_jug": {
+          "type": "float"
+        },
+        "red_player_total_units_healed_jug": {
+          "type": "float"
+        },
+        "red_player_longest_time_spent_living_jug": {
+          "type": "float"
+        },
+        "red_player_neutral_minions_killed_jug": {
+          "type": "float"
+        },
+        "red_player_neutral_minions_killed_enemy_jungle_jug": {
+          "type": "float"
+        },
+        "red_player_neutral_minions_killed_team_jungle_jug": {
+          "type": "float"
+        },
+        "red_player_damage_dealt_to_objectives_jug": {
+          "type": "float"
+        },
+        "red_player_damage_dealt_to_turrets_jug": {
+          "type": "float"
+        },
+        "red_player_damage_self_mitigated_jug": {
+          "type": "float"
+        },
+        "red_pick_mid": {
+          "type": "text"
+        },
+        "red_player_mid": {
+          "type": "text"
+        },
+        "red_player_level_mid": {
+          "type": "float"
+        },
+        "red_summoner_spell_d_mid": {
+          "type": "float"
+        },
+        "red_summoner_spell_f_mid": {
+          "type": "float"
+        },
+        "red_player_kill_mid": {
+          "type": "float"
+        },
+        "red_player_deaths_mid": {
+          "type": "float"
+        },
+        "red_player_assists_mid": {
+          "type": "float"
+        },
+        "red_player_gold_earned_mid": {
+          "type": "float"
+        },
+        "red_player_gold_spent_mid": {
+          "type": "float"
+        },
+        "red_player_kda_mid": {
+          "type": "float"
+        },
+        "red_player_total_minions_killed_mid": {
+          "type": "float"
+        },
+        "red_player_turret_kills_mid": {
+          "type": "float"
+        },
+        "red_player_inhibitor_kills_mid": {
+          "type": "float"
+        },
+        "red_player_killing_sprees_mid": {
+          "type": "float"
+        },
+        "red_player_double_kills_mid": {
+          "type": "float"
+        },
+        "red_player_triple_kills_mid": {
+          "type": "float"
+        },
+        "red_player_quadra_kills_mid": {
+          "type": "float"
+        },
+        "red_player_panta_kills_mid": {
+          "type": "float"
+        },
+        "red_player_first_blood_assist_mid": {
+          "type": "boolean"
+        },
+        "red_player_first_blood_kill_mid": {
+          "type": "boolean"
+        },
+        "red_player_first_inhibitor_assist_mid": {
+          "type": "boolean"
+        },
+        "red_player_first_inhibitor_kill_mid": {
+          "type": "boolean"
+        },
+        "red_player_first_tower_assist_mid": {
+          "type": "boolean"
+        },
+        "red_player_first_tower_kill_mid": {
+          "type": "boolean"
+        },
+        "red_player_vision_score_mid": {
+          "type": "float"
+        },
+        "red_player_vision_wards_bought_in_game_mid": {
+          "type": "float"
+        },
+        "red_player_sight_wards_bought_in_game_mid": {
+          "type": "float"
+        },
+        "red_player_wards_killed_mid": {
+          "type": "float"
+        },
+        "red_player_wards_placed_mid": {
+          "type": "float"
+        },
+        "red_player_total_time_crowd_control_dealt_mid": {
+          "type": "float"
+        },
+        "red_player_total_damage_dealt_mid": {
+          "type": "float"
+        },
+        "red_player_total_damage_dealt_to_champions_mid": {
+          "type": "float"
+        },
+        "red_player_total_damage_taken_mid": {
+          "type": "float"
+        },
+        "red_player_total_heal_mid": {
+          "type": "float"
+        },
+        "red_player_total_units_healed_mid": {
+          "type": "float"
+        },
+        "red_player_longest_time_spent_living_mid": {
+          "type": "float"
+        },
+        "red_player_neutral_minions_killed_mid": {
+          "type": "float"
+        },
+        "red_player_neutral_minions_killed_enemy_jungle_mid": {
+          "type": "float"
+        },
+        "red_player_neutral_minions_killed_team_jungle_mid": {
+          "type": "float"
+        },
+        "red_player_damage_dealt_to_objectives_mid": {
+          "type": "float"
+        },
+        "red_player_damage_dealt_to_turrets_mid": {
+          "type": "float"
+        },
+        "red_player_damage_self_mitigated_mid": {
+          "type": "float"
+        },
+        "red_pick_adc": {
+          "type": "text"
+        },
+        "red_player_adc": {
+          "type": "text"
+        },
+        "red_player_level_adc": {
+          "type": "float"
+        },
+        "red_summoner_spell_d_adc": {
+          "type": "float"
+        },
+        "red_summoner_spell_f_adc": {
+          "type": "float"
+        },
+        "red_player_kill_adc": {
+          "type": "float"
+        },
+        "red_player_deaths_adc": {
+          "type": "float"
+        },
+        "red_player_assists_adc": {
+          "type": "float"
+        },
+        "red_player_gold_earned_adc": {
+          "type": "float"
+        },
+        "red_player_gold_spent_adc": {
+          "type": "float"
+        },
+        "red_player_kda_adc": {
+          "type": "float"
+        },
+        "red_player_total_minions_killed_adc": {
+          "type": "float"
+        },
+        "red_player_turret_kills_adc": {
+          "type": "float"
+        },
+        "red_player_inhibitor_kills_adc": {
+          "type": "float"
+        },
+        "red_player_killing_sprees_adc": {
+          "type": "float"
+        },
+        "red_player_double_kills_adc": {
+          "type": "float"
+        },
+        "red_player_triple_kills_adc": {
+          "type": "float"
+        },
+        "red_player_quadra_kills_adc": {
+          "type": "float"
+        },
+        "red_player_panta_kills_adc": {
+          "type": "float"
+        },
+        "red_player_first_blood_assist_adc": {
+          "type": "boolean"
+        },
+        "red_player_first_blood_kill_adc": {
+          "type": "boolean"
+        },
+        "red_player_first_inhibitor_assist_adc": {
+          "type": "boolean"
+        },
+        "red_player_first_inhibitor_kill_adc": {
+          "type": "boolean"
+        },
+        "red_player_first_tower_assist_adc": {
+          "type": "boolean"
+        },
+        "red_player_first_tower_kill_adc": {
+          "type": "boolean"
+        },
+        "red_player_vision_score_adc": {
+          "type": "float"
+        },
+        "red_player_vision_wards_bought_in_game_adc": {
+          "type": "float"
+        },
+        "red_player_sight_wards_bought_in_game_adc": {
+          "type": "float"
+        },
+        "red_player_wards_killed_adc": {
+          "type": "float"
+        },
+        "red_player_wards_placed_adc": {
+          "type": "float"
+        },
+        "red_player_total_time_crowd_control_dealt_adc": {
+          "type": "float"
+        },
+        "red_player_total_damage_dealt_adc": {
+          "type": "float"
+        },
+        "red_player_total_damage_dealt_to_champions_adc": {
+          "type": "float"
+        },
+        "red_player_total_damage_taken_adc": {
+          "type": "float"
+        },
+        "red_player_total_heal_adc": {
+          "type": "float"
+        },
+        "red_player_total_units_healed_adc": {
+          "type": "float"
+        },
+        "red_player_longest_time_spent_living_adc": {
+          "type": "float"
+        },
+        "red_player_neutral_minions_killed_adc": {
+          "type": "float"
+        },
+        "red_player_neutral_minions_killed_enemy_jungle_adc": {
+          "type": "float"
+        },
+        "red_player_neutral_minions_killed_team_jungle_adc": {
+          "type": "float"
+        },
+        "red_player_damage_dealt_to_objectives_adc": {
+          "type": "float"
+        },
+        "red_player_damage_dealt_to_turrets_adc": {
+          "type": "float"
+        },
+        "red_player_damage_self_mitigated_adc": {
+          "type": "float"
+        },
+        "red_pick_sup": {
+          "type": "text"
+        },
+        "red_player_sup": {
+          "type": "text"
+        },
+        "red_player_level_sup": {
+          "type": "float"
+        },
+        "red_summoner_spell_d_sup": {
+          "type": "float"
+        },
+        "red_summoner_spell_f_sup": {
+          "type": "float"
+        },
+        "red_player_kill_sup": {
+          "type": "float"
+        },
+        "red_player_deaths_sup": {
+          "type": "float"
+        },
+        "red_player_assists_sup": {
+          "type": "float"
+        },
+        "red_player_gold_earned_sup": {
+          "type": "float"
+        },
+        "red_player_gold_spent_sup": {
+          "type": "float"
+        },
+        "red_player_kda_sup": {
+          "type": "float"
+        },
+        "red_player_total_minions_killed_sup": {
+          "type": "float"
+        },
+        "red_player_turret_kills_sup": {
+          "type": "float"
+        },
+        "red_player_inhibitor_kills_sup": {
+          "type": "float"
+        },
+        "red_player_killing_sprees_sup": {
+          "type": "float"
+        },
+        "red_player_double_kills_sup": {
+          "type": "float"
+        },
+        "red_player_triple_kills_sup": {
+          "type": "float"
+        },
+        "red_player_quadra_kills_sup": {
+          "type": "float"
+        },
+        "red_player_panta_kills_sup": {
+          "type": "float"
+        },
+        "red_player_first_blood_assist_sup": {
+          "type": "boolean"
+        },
+        "red_player_first_blood_kill_sup": {
+          "type": "boolean"
+        },
+        "red_player_first_inhibitor_assist_sup": {
+          "type": "boolean"
+        },
+        "red_player_first_inhibitor_kill_sup": {
+          "type": "boolean"
+        },
+        "red_player_first_tower_assist_sup": {
+          "type": "boolean"
+        },
+        "red_player_first_tower_kill_sup": {
+          "type": "boolean"
+        },
+        "red_player_vision_score_sup": {
+          "type": "float"
+        },
+        "red_player_vision_wards_bought_in_game_sup": {
+          "type": "float"
+        },
+        "red_player_sight_wards_bought_in_game_sup": {
+          "type": "float"
+        },
+        "red_player_wards_killed_sup": {
+          "type": "float"
+        },
+        "red_player_wards_placed_sup": {
+          "type": "float"
+        },
+        "red_player_total_time_crowd_control_dealt_sup": {
+          "type": "float"
+        },
+        "red_player_total_damage_dealt_sup": {
+          "type": "float"
+        },
+        "red_player_total_damage_dealt_to_champions_sup": {
+          "type": "float"
+        },
+        "red_player_total_damage_taken_sup": {
+          "type": "float"
+        },
+        "red_player_total_heal_sup": {
+          "type": "float"
+        },
+        "red_player_total_units_healed_sup": {
+          "type": "float"
+        },
+        "red_player_longest_time_spent_living_sup": {
+          "type": "float"
+        },
+        "red_player_neutral_minions_killed_sup": {
+          "type": "float"
+        },
+        "red_player_neutral_minions_killed_enemy_jungle_sup": {
+          "type": "float"
+        },
+        "red_player_neutral_minions_killed_team_jungle_sup": {
+          "type": "float"
+        },
+        "red_player_damage_dealt_to_objectives_sup": {
+          "type": "float"
+        },
+        "red_player_damage_dealt_to_turrets_sup": {
+          "type": "float"
+        },
+        "red_player_damage_self_mitigated_sup": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_0-10_top": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_10-20_top": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_20-30_top": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_30-40_top": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_40-50_top": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_50-60_top": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_60-70_top": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_70-80_top": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_80-90_top": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_90-100_top": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_0-10_top": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_10-20_top": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_20-30_top": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_30-40_top": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_40-50_top": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_50-60_top": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_60-70_top": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_70-80_top": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_80-90_top": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_90-100_top": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_0-10_top": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_10-20_top": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_20-30_top": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_30-40_top": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_40-50_top": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_50-60_top": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_60-70_top": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_70-80_top": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_80-90_top": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_90-100_top": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_0-10_top": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_10-20_top": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_20-30_top": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_30-40_top": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_40-50_top": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_50-60_top": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_60-70_top": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_70-80_top": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_80-90_top": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_90-100_top": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_0-10_top": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_10-20_top": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_20-30_top": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_30-40_top": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_40-50_top": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_50-60_top": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_60-70_top": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_70-80_top": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_80-90_top": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_90-100_top": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_0-10_top": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_10-20_top": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_20-30_top": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_30-40_top": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_40-50_top": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_50-60_top": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_60-70_top": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_70-80_top": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_80-90_top": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_90-100_top": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_0-10_top": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_10-20_top": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_20-30_top": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_30-40_top": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_40-50_top": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_50-60_top": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_60-70_top": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_70-80_top": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_80-90_top": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_90-100_top": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_0-10_jug": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_10-20_jug": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_20-30_jug": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_30-40_jug": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_40-50_jug": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_50-60_jug": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_60-70_jug": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_70-80_jug": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_80-90_jug": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_90-100_jug": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_0-10_jug": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_10-20_jug": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_20-30_jug": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_30-40_jug": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_40-50_jug": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_50-60_jug": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_60-70_jug": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_70-80_jug": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_80-90_jug": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_90-100_jug": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_0-10_jug": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_10-20_jug": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_20-30_jug": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_30-40_jug": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_40-50_jug": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_50-60_jug": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_60-70_jug": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_70-80_jug": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_80-90_jug": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_90-100_jug": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_0-10_jug": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_10-20_jug": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_20-30_jug": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_30-40_jug": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_40-50_jug": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_50-60_jug": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_60-70_jug": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_70-80_jug": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_80-90_jug": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_90-100_jug": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_0-10_jug": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_10-20_jug": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_20-30_jug": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_30-40_jug": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_40-50_jug": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_50-60_jug": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_60-70_jug": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_70-80_jug": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_80-90_jug": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_90-100_jug": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_0-10_jug": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_10-20_jug": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_20-30_jug": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_30-40_jug": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_40-50_jug": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_50-60_jug": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_60-70_jug": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_70-80_jug": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_80-90_jug": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_90-100_jug": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_0-10_jug": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_10-20_jug": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_20-30_jug": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_30-40_jug": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_40-50_jug": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_50-60_jug": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_60-70_jug": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_70-80_jug": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_80-90_jug": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_90-100_jug": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_0-10_mid": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_10-20_mid": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_20-30_mid": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_30-40_mid": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_40-50_mid": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_50-60_mid": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_60-70_mid": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_70-80_mid": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_80-90_mid": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_90-100_mid": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_0-10_mid": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_10-20_mid": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_20-30_mid": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_30-40_mid": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_40-50_mid": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_50-60_mid": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_60-70_mid": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_70-80_mid": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_80-90_mid": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_90-100_mid": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_0-10_mid": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_10-20_mid": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_20-30_mid": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_30-40_mid": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_40-50_mid": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_50-60_mid": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_60-70_mid": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_70-80_mid": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_80-90_mid": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_90-100_mid": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_0-10_mid": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_10-20_mid": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_20-30_mid": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_30-40_mid": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_40-50_mid": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_50-60_mid": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_60-70_mid": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_70-80_mid": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_80-90_mid": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_90-100_mid": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_0-10_mid": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_10-20_mid": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_20-30_mid": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_30-40_mid": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_40-50_mid": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_50-60_mid": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_60-70_mid": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_70-80_mid": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_80-90_mid": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_90-100_mid": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_0-10_mid": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_10-20_mid": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_20-30_mid": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_30-40_mid": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_40-50_mid": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_50-60_mid": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_60-70_mid": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_70-80_mid": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_80-90_mid": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_90-100_mid": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_0-10_mid": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_10-20_mid": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_20-30_mid": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_30-40_mid": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_40-50_mid": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_50-60_mid": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_60-70_mid": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_70-80_mid": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_80-90_mid": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_90-100_mid": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_0-10_adc": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_10-20_adc": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_20-30_adc": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_30-40_adc": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_40-50_adc": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_50-60_adc": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_60-70_adc": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_70-80_adc": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_80-90_adc": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_90-100_adc": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_0-10_adc": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_10-20_adc": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_20-30_adc": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_30-40_adc": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_40-50_adc": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_50-60_adc": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_60-70_adc": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_70-80_adc": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_80-90_adc": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_90-100_adc": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_0-10_adc": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_10-20_adc": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_20-30_adc": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_30-40_adc": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_40-50_adc": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_50-60_adc": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_60-70_adc": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_70-80_adc": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_80-90_adc": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_90-100_adc": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_0-10_adc": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_10-20_adc": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_20-30_adc": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_30-40_adc": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_40-50_adc": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_50-60_adc": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_60-70_adc": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_70-80_adc": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_80-90_adc": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_90-100_adc": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_0-10_adc": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_10-20_adc": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_20-30_adc": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_30-40_adc": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_40-50_adc": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_50-60_adc": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_60-70_adc": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_70-80_adc": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_80-90_adc": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_90-100_adc": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_0-10_adc": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_10-20_adc": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_20-30_adc": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_30-40_adc": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_40-50_adc": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_50-60_adc": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_60-70_adc": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_70-80_adc": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_80-90_adc": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_90-100_adc": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_0-10_adc": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_10-20_adc": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_20-30_adc": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_30-40_adc": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_40-50_adc": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_50-60_adc": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_60-70_adc": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_70-80_adc": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_80-90_adc": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_90-100_adc": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_0-10_sup": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_10-20_sup": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_20-30_sup": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_30-40_sup": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_40-50_sup": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_50-60_sup": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_60-70_sup": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_70-80_sup": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_80-90_sup": {
+          "type": "float"
+        },
+        "red_player_creeps_per_min_deltas_90-100_sup": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_0-10_sup": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_10-20_sup": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_20-30_sup": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_30-40_sup": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_40-50_sup": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_50-60_sup": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_60-70_sup": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_70-80_sup": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_80-90_sup": {
+          "type": "float"
+        },
+        "red_player_cs_diff_per_min_deltas_90-100_sup": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_0-10_sup": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_10-20_sup": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_20-30_sup": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_30-40_sup": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_40-50_sup": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_50-60_sup": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_60-70_sup": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_70-80_sup": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_80-90_sup": {
+          "type": "float"
+        },
+        "red_player_damage_taken_diff_per_min_deltas_90-100_sup": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_0-10_sup": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_10-20_sup": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_20-30_sup": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_30-40_sup": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_40-50_sup": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_50-60_sup": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_60-70_sup": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_70-80_sup": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_80-90_sup": {
+          "type": "float"
+        },
+        "red_player_damage_taken_per_min_deltas_90-100_sup": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_0-10_sup": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_10-20_sup": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_20-30_sup": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_30-40_sup": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_40-50_sup": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_50-60_sup": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_60-70_sup": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_70-80_sup": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_80-90_sup": {
+          "type": "float"
+        },
+        "red_player_gold_per_min_deltas_90-100_sup": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_0-10_sup": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_10-20_sup": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_20-30_sup": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_30-40_sup": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_40-50_sup": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_50-60_sup": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_60-70_sup": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_70-80_sup": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_80-90_sup": {
+          "type": "float"
+        },
+        "red_player_xp_per_min_deltas_90-100_sup": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_0-10_sup": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_10-20_sup": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_20-30_sup": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_30-40_sup": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_40-50_sup": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_50-60_sup": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_60-70_sup": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_70-80_sup": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_80-90_sup": {
+          "type": "float"
+        },
+        "red_player_xp_diff_per_min_deltas_90-100_sup": {
+          "type": "float"
+        },
+        "blue_pick_top": {
+          "type": "text"
+        },
+        "blue_player_top": {
+          "type": "text"
+        },
+        "blue_player_level_top": {
+          "type": "float"
+        },
+        "blue_summoner_spell_d_top": {
+          "type": "float"
+        },
+        "blue_summoner_spell_f_top": {
+          "type": "float"
+        },
+        "blue_player_kill_top": {
+          "type": "float"
+        },
+        "blue_player_deaths_top": {
+          "type": "float"
+        },
+        "blue_player_assists_top": {
+          "type": "float"
+        },
+        "blue_player_gold_earned_top": {
+          "type": "float"
+        },
+        "blue_player_gold_spent_top": {
+          "type": "float"
+        },
+        "blue_player_kda_top": {
+          "type": "float"
+        },
+        "blue_player_total_minions_killed_top": {
+          "type": "float"
+        },
+        "blue_player_turret_kills_top": {
+          "type": "float"
+        },
+        "blue_player_inhibitor_kills_top": {
+          "type": "float"
+        },
+        "blue_player_killing_sprees_top": {
+          "type": "float"
+        },
+        "blue_player_double_kills_top": {
+          "type": "float"
+        },
+        "blue_player_triple_kills_top": {
+          "type": "float"
+        },
+        "blue_player_quadra_kills_top": {
+          "type": "float"
+        },
+        "blue_player_panta_kills_top": {
+          "type": "float"
+        },
+        "blue_player_first_blood_assist_top": {
+          "type": "boolean"
+        },
+        "blue_player_first_blood_kill_top": {
+          "type": "boolean"
+        },
+        "blue_player_first_inhibitor_assist_top": {
+          "type": "boolean"
+        },
+        "blue_player_first_inhibitor_kill_top": {
+          "type": "boolean"
+        },
+        "blue_player_first_tower_assist_top": {
+          "type": "boolean"
+        },
+        "blue_player_first_tower_kill_top": {
+          "type": "boolean"
+        },
+        "blue_player_vision_score_top": {
+          "type": "float"
+        },
+        "blue_player_vision_wards_bought_in_game_top": {
+          "type": "float"
+        },
+        "blue_player_sight_wards_bought_in_game_top": {
+          "type": "float"
+        },
+        "blue_player_wards_killed_top": {
+          "type": "float"
+        },
+        "blue_player_wards_placed_top": {
+          "type": "float"
+        },
+        "blue_player_total_time_crowd_control_dealt_top": {
+          "type": "float"
+        },
+        "blue_player_total_damage_dealt_top": {
+          "type": "float"
+        },
+        "blue_player_total_damage_dealt_to_champions_top": {
+          "type": "float"
+        },
+        "blue_player_total_damage_taken_top": {
+          "type": "float"
+        },
+        "blue_player_total_heal_top": {
+          "type": "float"
+        },
+        "blue_player_total_units_healed_top": {
+          "type": "float"
+        },
+        "blue_player_longest_time_spent_living_top": {
+          "type": "float"
+        },
+        "blue_player_neutral_minions_killed_top": {
+          "type": "float"
+        },
+        "blue_player_neutral_minions_killed_enemy_jungle_top": {
+          "type": "float"
+        },
+        "blue_player_neutral_minions_killed_team_jungle_top": {
+          "type": "float"
+        },
+        "blue_player_damage_dealt_to_objectives_top": {
+          "type": "float"
+        },
+        "blue_player_damage_dealt_to_turrets_top": {
+          "type": "float"
+        },
+        "blue_player_damage_self_mitigated_top": {
+          "type": "float"
+        },
+        "blue_pick_jug": {
+          "type": "text"
+        },
+        "blue_player_jug": {
+          "type": "text"
+        },
+        "blue_player_level_jug": {
+          "type": "float"
+        },
+        "blue_summoner_spell_d_jug": {
+          "type": "float"
+        },
+        "blue_summoner_spell_f_jug": {
+          "type": "float"
+        },
+        "blue_player_kill_jug": {
+          "type": "float"
+        },
+        "blue_player_deaths_jug": {
+          "type": "float"
+        },
+        "blue_player_assists_jug": {
+          "type": "float"
+        },
+        "blue_player_gold_earned_jug": {
+          "type": "float"
+        },
+        "blue_player_gold_spent_jug": {
+          "type": "float"
+        },
+        "blue_player_kda_jug": {
+          "type": "float"
+        },
+        "blue_player_total_minions_killed_jug": {
+          "type": "float"
+        },
+        "blue_player_turret_kills_jug": {
+          "type": "float"
+        },
+        "blue_player_inhibitor_kills_jug": {
+          "type": "float"
+        },
+        "blue_player_killing_sprees_jug": {
+          "type": "float"
+        },
+        "blue_player_double_kills_jug": {
+          "type": "float"
+        },
+        "blue_player_triple_kills_jug": {
+          "type": "float"
+        },
+        "blue_player_quadra_kills_jug": {
+          "type": "float"
+        },
+        "blue_player_panta_kills_jug": {
+          "type": "float"
+        },
+        "blue_player_first_blood_assist_jug": {
+          "type": "boolean"
+        },
+        "blue_player_first_blood_kill_jug": {
+          "type": "boolean"
+        },
+        "blue_player_first_inhibitor_assist_jug": {
+          "type": "boolean"
+        },
+        "blue_player_first_inhibitor_kill_jug": {
+          "type": "boolean"
+        },
+        "blue_player_first_tower_assist_jug": {
+          "type": "boolean"
+        },
+        "blue_player_first_tower_kill_jug": {
+          "type": "boolean"
+        },
+        "blue_player_vision_score_jug": {
+          "type": "float"
+        },
+        "blue_player_vision_wards_bought_in_game_jug": {
+          "type": "float"
+        },
+        "blue_player_sight_wards_bought_in_game_jug": {
+          "type": "float"
+        },
+        "blue_player_wards_killed_jug": {
+          "type": "float"
+        },
+        "blue_player_wards_placed_jug": {
+          "type": "float"
+        },
+        "blue_player_total_time_crowd_control_dealt_jug": {
+          "type": "float"
+        },
+        "blue_player_total_damage_dealt_jug": {
+          "type": "float"
+        },
+        "blue_player_total_damage_dealt_to_champions_jug": {
+          "type": "float"
+        },
+        "blue_player_total_damage_taken_jug": {
+          "type": "float"
+        },
+        "blue_player_total_heal_jug": {
+          "type": "float"
+        },
+        "blue_player_total_units_healed_jug": {
+          "type": "float"
+        },
+        "blue_player_longest_time_spent_living_jug": {
+          "type": "float"
+        },
+        "blue_player_neutral_minions_killed_jug": {
+          "type": "float"
+        },
+        "blue_player_neutral_minions_killed_enemy_jungle_jug": {
+          "type": "float"
+        },
+        "blue_player_neutral_minions_killed_team_jungle_jug": {
+          "type": "float"
+        },
+        "blue_player_damage_dealt_to_objectives_jug": {
+          "type": "float"
+        },
+        "blue_player_damage_dealt_to_turrets_jug": {
+          "type": "float"
+        },
+        "blue_player_damage_self_mitigated_jug": {
+          "type": "float"
+        },
+        "blue_pick_mid": {
+          "type": "text"
+        },
+        "blue_player_mid": {
+          "type": "text"
+        },
+        "blue_player_level_mid": {
+          "type": "float"
+        },
+        "blue_summoner_spell_d_mid": {
+          "type": "float"
+        },
+        "blue_summoner_spell_f_mid": {
+          "type": "float"
+        },
+        "blue_player_kill_mid": {
+          "type": "float"
+        },
+        "blue_player_deaths_mid": {
+          "type": "float"
+        },
+        "blue_player_assists_mid": {
+          "type": "float"
+        },
+        "blue_player_gold_earned_mid": {
+          "type": "float"
+        },
+        "blue_player_gold_spent_mid": {
+          "type": "float"
+        },
+        "blue_player_kda_mid": {
+          "type": "float"
+        },
+        "blue_player_total_minions_killed_mid": {
+          "type": "float"
+        },
+        "blue_player_turret_kills_mid": {
+          "type": "float"
+        },
+        "blue_player_inhibitor_kills_mid": {
+          "type": "float"
+        },
+        "blue_player_killing_sprees_mid": {
+          "type": "float"
+        },
+        "blue_player_double_kills_mid": {
+          "type": "float"
+        },
+        "blue_player_triple_kills_mid": {
+          "type": "float"
+        },
+        "blue_player_quadra_kills_mid": {
+          "type": "float"
+        },
+        "blue_player_panta_kills_mid": {
+          "type": "float"
+        },
+        "blue_player_first_blood_assist_mid": {
+          "type": "boolean"
+        },
+        "blue_player_first_blood_kill_mid": {
+          "type": "boolean"
+        },
+        "blue_player_first_inhibitor_assist_mid": {
+          "type": "boolean"
+        },
+        "blue_player_first_inhibitor_kill_mid": {
+          "type": "boolean"
+        },
+        "blue_player_first_tower_assist_mid": {
+          "type": "boolean"
+        },
+        "blue_player_first_tower_kill_mid": {
+          "type": "boolean"
+        },
+        "blue_player_vision_score_mid": {
+          "type": "float"
+        },
+        "blue_player_vision_wards_bought_in_game_mid": {
+          "type": "float"
+        },
+        "blue_player_sight_wards_bought_in_game_mid": {
+          "type": "float"
+        },
+        "blue_player_wards_killed_mid": {
+          "type": "float"
+        },
+        "blue_player_wards_placed_mid": {
+          "type": "float"
+        },
+        "blue_player_total_time_crowd_control_dealt_mid": {
+          "type": "float"
+        },
+        "blue_player_total_damage_dealt_mid": {
+          "type": "float"
+        },
+        "blue_player_total_damage_dealt_to_champions_mid": {
+          "type": "float"
+        },
+        "blue_player_total_damage_taken_mid": {
+          "type": "float"
+        },
+        "blue_player_total_heal_mid": {
+          "type": "float"
+        },
+        "blue_player_total_units_healed_mid": {
+          "type": "float"
+        },
+        "blue_player_longest_time_spent_living_mid": {
+          "type": "float"
+        },
+        "blue_player_neutral_minions_killed_mid": {
+          "type": "float"
+        },
+        "blue_player_neutral_minions_killed_enemy_jungle_mid": {
+          "type": "float"
+        },
+        "blue_player_neutral_minions_killed_team_jungle_mid": {
+          "type": "float"
+        },
+        "blue_player_damage_dealt_to_objectives_mid": {
+          "type": "float"
+        },
+        "blue_player_damage_dealt_to_turrets_mid": {
+          "type": "float"
+        },
+        "blue_player_damage_self_mitigated_mid": {
+          "type": "float"
+        },
+        "blue_pick_adc": {
+          "type": "text"
+        },
+        "blue_player_adc": {
+          "type": "text"
+        },
+        "blue_player_level_adc": {
+          "type": "float"
+        },
+        "blue_summoner_spell_d_adc": {
+          "type": "float"
+        },
+        "blue_summoner_spell_f_adc": {
+          "type": "float"
+        },
+        "blue_player_kill_adc": {
+          "type": "float"
+        },
+        "blue_player_deaths_adc": {
+          "type": "float"
+        },
+        "blue_player_assists_adc": {
+          "type": "float"
+        },
+        "blue_player_gold_earned_adc": {
+          "type": "float"
+        },
+        "blue_player_gold_spent_adc": {
+          "type": "float"
+        },
+        "blue_player_kda_adc": {
+          "type": "float"
+        },
+        "blue_player_total_minions_killed_adc": {
+          "type": "float"
+        },
+        "blue_player_turret_kills_adc": {
+          "type": "float"
+        },
+        "blue_player_inhibitor_kills_adc": {
+          "type": "float"
+        },
+        "blue_player_killing_sprees_adc": {
+          "type": "float"
+        },
+        "blue_player_double_kills_adc": {
+          "type": "float"
+        },
+        "blue_player_triple_kills_adc": {
+          "type": "float"
+        },
+        "blue_player_quadra_kills_adc": {
+          "type": "float"
+        },
+        "blue_player_panta_kills_adc": {
+          "type": "float"
+        },
+        "blue_player_first_blood_assist_adc": {
+          "type": "boolean"
+        },
+        "blue_player_first_blood_kill_adc": {
+          "type": "boolean"
+        },
+        "blue_player_first_inhibitor_assist_adc": {
+          "type": "boolean"
+        },
+        "blue_player_first_inhibitor_kill_adc": {
+          "type": "boolean"
+        },
+        "blue_player_first_tower_assist_adc": {
+          "type": "boolean"
+        },
+        "blue_player_first_tower_kill_adc": {
+          "type": "boolean"
+        },
+        "blue_player_vision_score_adc": {
+          "type": "float"
+        },
+        "blue_player_vision_wards_bought_in_game_adc": {
+          "type": "float"
+        },
+        "blue_player_sight_wards_bought_in_game_adc": {
+          "type": "float"
+        },
+        "blue_player_wards_killed_adc": {
+          "type": "float"
+        },
+        "blue_player_wards_placed_adc": {
+          "type": "float"
+        },
+        "blue_player_total_time_crowd_control_dealt_adc": {
+          "type": "float"
+        },
+        "blue_player_total_damage_dealt_adc": {
+          "type": "float"
+        },
+        "blue_player_total_damage_dealt_to_champions_adc": {
+          "type": "float"
+        },
+        "blue_player_total_damage_taken_adc": {
+          "type": "float"
+        },
+        "blue_player_total_heal_adc": {
+          "type": "float"
+        },
+        "blue_player_total_units_healed_adc": {
+          "type": "float"
+        },
+        "blue_player_longest_time_spent_living_adc": {
+          "type": "float"
+        },
+        "blue_player_neutral_minions_killed_adc": {
+          "type": "float"
+        },
+        "blue_player_neutral_minions_killed_enemy_jungle_adc": {
+          "type": "float"
+        },
+        "blue_player_neutral_minions_killed_team_jungle_adc": {
+          "type": "float"
+        },
+        "blue_player_damage_dealt_to_objectives_adc": {
+          "type": "float"
+        },
+        "blue_player_damage_dealt_to_turrets_adc": {
+          "type": "float"
+        },
+        "blue_player_damage_self_mitigated_adc": {
+          "type": "float"
+        },
+        "blue_pick_sup": {
+          "type": "text"
+        },
+        "blue_player_sup": {
+          "type": "text"
+        },
+        "blue_player_level_sup": {
+          "type": "float"
+        },
+        "blue_summoner_spell_d_sup": {
+          "type": "float"
+        },
+        "blue_summoner_spell_f_sup": {
+          "type": "float"
+        },
+        "blue_player_kill_sup": {
+          "type": "float"
+        },
+        "blue_player_deaths_sup": {
+          "type": "float"
+        },
+        "blue_player_assists_sup": {
+          "type": "float"
+        },
+        "blue_player_gold_earned_sup": {
+          "type": "float"
+        },
+        "blue_player_gold_spent_sup": {
+          "type": "float"
+        },
+        "blue_player_kda_sup": {
+          "type": "float"
+        },
+        "blue_player_total_minions_killed_sup": {
+          "type": "float"
+        },
+        "blue_player_turret_kills_sup": {
+          "type": "float"
+        },
+        "blue_player_inhibitor_kills_sup": {
+          "type": "float"
+        },
+        "blue_player_killing_sprees_sup": {
+          "type": "float"
+        },
+        "blue_player_double_kills_sup": {
+          "type": "float"
+        },
+        "blue_player_triple_kills_sup": {
+          "type": "float"
+        },
+        "blue_player_quadra_kills_sup": {
+          "type": "float"
+        },
+        "blue_player_panta_kills_sup": {
+          "type": "float"
+        },
+        "blue_player_first_blood_assist_sup": {
+          "type": "boolean"
+        },
+        "blue_player_first_blood_kill_sup": {
+          "type": "boolean"
+        },
+        "blue_player_first_inhibitor_assist_sup": {
+          "type": "boolean"
+        },
+        "blue_player_first_inhibitor_kill_sup": {
+          "type": "boolean"
+        },
+        "blue_player_first_tower_assist_sup": {
+          "type": "boolean"
+        },
+        "blue_player_first_tower_kill_sup": {
+          "type": "boolean"
+        },
+        "blue_player_vision_score_sup": {
+          "type": "float"
+        },
+        "blue_player_vision_wards_bought_in_game_sup": {
+          "type": "float"
+        },
+        "blue_player_sight_wards_bought_in_game_sup": {
+          "type": "float"
+        },
+        "blue_player_wards_killed_sup": {
+          "type": "float"
+        },
+        "blue_player_wards_placed_sup": {
+          "type": "float"
+        },
+        "blue_player_total_time_crowd_control_dealt_sup": {
+          "type": "float"
+        },
+        "blue_player_total_damage_dealt_sup": {
+          "type": "float"
+        },
+        "blue_player_total_damage_dealt_to_champions_sup": {
+          "type": "float"
+        },
+        "blue_player_total_damage_taken_sup": {
+          "type": "float"
+        },
+        "blue_player_total_heal_sup": {
+          "type": "float"
+        },
+        "blue_player_total_units_healed_sup": {
+          "type": "float"
+        },
+        "blue_player_longest_time_spent_living_sup": {
+          "type": "float"
+        },
+        "blue_player_neutral_minions_killed_sup": {
+          "type": "float"
+        },
+        "blue_player_neutral_minions_killed_enemy_jungle_sup": {
+          "type": "float"
+        },
+        "blue_player_neutral_minions_killed_team_jungle_sup": {
+          "type": "float"
+        },
+        "blue_player_damage_dealt_to_objectives_sup": {
+          "type": "float"
+        },
+        "blue_player_damage_dealt_to_turrets_sup": {
+          "type": "float"
+        },
+        "blue_player_damage_self_mitigated_sup": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_0-10_top": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_10-20_top": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_20-30_top": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_30-40_top": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_40-50_top": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_50-60_top": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_60-70_top": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_70-80_top": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_80-90_top": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_90-100_top": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_0-10_top": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_10-20_top": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_20-30_top": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_30-40_top": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_40-50_top": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_50-60_top": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_60-70_top": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_70-80_top": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_80-90_top": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_90-100_top": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_0-10_top": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_10-20_top": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_20-30_top": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_30-40_top": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_40-50_top": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_50-60_top": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_60-70_top": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_70-80_top": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_80-90_top": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_90-100_top": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_0-10_top": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_10-20_top": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_20-30_top": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_30-40_top": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_40-50_top": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_50-60_top": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_60-70_top": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_70-80_top": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_80-90_top": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_90-100_top": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_0-10_top": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_10-20_top": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_20-30_top": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_30-40_top": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_40-50_top": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_50-60_top": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_60-70_top": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_70-80_top": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_80-90_top": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_90-100_top": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_0-10_top": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_10-20_top": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_20-30_top": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_30-40_top": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_40-50_top": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_50-60_top": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_60-70_top": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_70-80_top": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_80-90_top": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_90-100_top": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_0-10_top": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_10-20_top": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_20-30_top": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_30-40_top": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_40-50_top": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_50-60_top": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_60-70_top": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_70-80_top": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_80-90_top": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_90-100_top": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_0-10_jug": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_10-20_jug": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_20-30_jug": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_30-40_jug": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_40-50_jug": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_50-60_jug": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_60-70_jug": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_70-80_jug": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_80-90_jug": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_90-100_jug": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_0-10_jug": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_10-20_jug": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_20-30_jug": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_30-40_jug": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_40-50_jug": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_50-60_jug": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_60-70_jug": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_70-80_jug": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_80-90_jug": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_90-100_jug": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_0-10_jug": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_10-20_jug": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_20-30_jug": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_30-40_jug": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_40-50_jug": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_50-60_jug": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_60-70_jug": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_70-80_jug": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_80-90_jug": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_90-100_jug": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_0-10_jug": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_10-20_jug": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_20-30_jug": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_30-40_jug": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_40-50_jug": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_50-60_jug": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_60-70_jug": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_70-80_jug": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_80-90_jug": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_90-100_jug": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_0-10_jug": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_10-20_jug": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_20-30_jug": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_30-40_jug": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_40-50_jug": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_50-60_jug": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_60-70_jug": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_70-80_jug": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_80-90_jug": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_90-100_jug": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_0-10_jug": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_10-20_jug": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_20-30_jug": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_30-40_jug": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_40-50_jug": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_50-60_jug": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_60-70_jug": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_70-80_jug": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_80-90_jug": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_90-100_jug": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_0-10_jug": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_10-20_jug": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_20-30_jug": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_30-40_jug": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_40-50_jug": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_50-60_jug": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_60-70_jug": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_70-80_jug": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_80-90_jug": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_90-100_jug": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_0-10_mid": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_10-20_mid": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_20-30_mid": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_30-40_mid": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_40-50_mid": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_50-60_mid": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_60-70_mid": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_70-80_mid": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_80-90_mid": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_90-100_mid": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_0-10_mid": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_10-20_mid": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_20-30_mid": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_30-40_mid": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_40-50_mid": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_50-60_mid": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_60-70_mid": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_70-80_mid": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_80-90_mid": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_90-100_mid": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_0-10_mid": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_10-20_mid": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_20-30_mid": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_30-40_mid": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_40-50_mid": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_50-60_mid": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_60-70_mid": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_70-80_mid": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_80-90_mid": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_90-100_mid": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_0-10_mid": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_10-20_mid": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_20-30_mid": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_30-40_mid": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_40-50_mid": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_50-60_mid": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_60-70_mid": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_70-80_mid": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_80-90_mid": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_90-100_mid": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_0-10_mid": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_10-20_mid": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_20-30_mid": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_30-40_mid": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_40-50_mid": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_50-60_mid": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_60-70_mid": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_70-80_mid": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_80-90_mid": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_90-100_mid": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_0-10_mid": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_10-20_mid": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_20-30_mid": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_30-40_mid": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_40-50_mid": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_50-60_mid": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_60-70_mid": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_70-80_mid": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_80-90_mid": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_90-100_mid": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_0-10_mid": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_10-20_mid": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_20-30_mid": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_30-40_mid": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_40-50_mid": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_50-60_mid": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_60-70_mid": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_70-80_mid": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_80-90_mid": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_90-100_mid": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_0-10_adc": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_10-20_adc": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_20-30_adc": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_30-40_adc": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_40-50_adc": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_50-60_adc": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_60-70_adc": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_70-80_adc": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_80-90_adc": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_90-100_adc": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_0-10_adc": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_10-20_adc": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_20-30_adc": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_30-40_adc": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_40-50_adc": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_50-60_adc": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_60-70_adc": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_70-80_adc": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_80-90_adc": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_90-100_adc": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_0-10_adc": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_10-20_adc": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_20-30_adc": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_30-40_adc": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_40-50_adc": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_50-60_adc": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_60-70_adc": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_70-80_adc": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_80-90_adc": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_90-100_adc": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_0-10_adc": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_10-20_adc": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_20-30_adc": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_30-40_adc": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_40-50_adc": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_50-60_adc": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_60-70_adc": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_70-80_adc": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_80-90_adc": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_90-100_adc": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_0-10_adc": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_10-20_adc": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_20-30_adc": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_30-40_adc": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_40-50_adc": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_50-60_adc": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_60-70_adc": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_70-80_adc": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_80-90_adc": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_90-100_adc": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_0-10_adc": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_10-20_adc": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_20-30_adc": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_30-40_adc": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_40-50_adc": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_50-60_adc": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_60-70_adc": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_70-80_adc": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_80-90_adc": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_90-100_adc": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_0-10_adc": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_10-20_adc": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_20-30_adc": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_30-40_adc": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_40-50_adc": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_50-60_adc": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_60-70_adc": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_70-80_adc": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_80-90_adc": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_90-100_adc": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_0-10_sup": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_10-20_sup": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_20-30_sup": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_30-40_sup": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_40-50_sup": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_50-60_sup": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_60-70_sup": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_70-80_sup": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_80-90_sup": {
+          "type": "float"
+        },
+        "blue_player_creeps_per_min_deltas_90-100_sup": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_0-10_sup": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_10-20_sup": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_20-30_sup": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_30-40_sup": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_40-50_sup": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_50-60_sup": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_60-70_sup": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_70-80_sup": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_80-90_sup": {
+          "type": "float"
+        },
+        "blue_player_cs_diff_per_min_deltas_90-100_sup": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_0-10_sup": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_10-20_sup": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_20-30_sup": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_30-40_sup": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_40-50_sup": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_50-60_sup": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_60-70_sup": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_70-80_sup": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_80-90_sup": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_diff_per_min_deltas_90-100_sup": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_0-10_sup": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_10-20_sup": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_20-30_sup": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_30-40_sup": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_40-50_sup": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_50-60_sup": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_60-70_sup": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_70-80_sup": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_80-90_sup": {
+          "type": "float"
+        },
+        "blue_player_damage_taken_per_min_deltas_90-100_sup": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_0-10_sup": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_10-20_sup": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_20-30_sup": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_30-40_sup": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_40-50_sup": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_50-60_sup": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_60-70_sup": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_70-80_sup": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_80-90_sup": {
+          "type": "float"
+        },
+        "blue_player_gold_per_min_deltas_90-100_sup": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_0-10_sup": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_10-20_sup": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_20-30_sup": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_30-40_sup": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_40-50_sup": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_50-60_sup": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_60-70_sup": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_70-80_sup": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_80-90_sup": {
+          "type": "float"
+        },
+        "blue_player_xp_per_min_deltas_90-100_sup": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_0-10_sup": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_10-20_sup": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_20-30_sup": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_30-40_sup": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_40-50_sup": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_50-60_sup": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_60-70_sup": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_70-80_sup": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_80-90_sup": {
+          "type": "float"
+        },
+        "blue_player_xp_diff_per_min_deltas_90-100_sup": {
+          "type": "float"
+        }
+      }
+    }
+  }
+}
