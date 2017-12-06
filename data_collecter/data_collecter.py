@@ -160,9 +160,9 @@ def collect_matches():
                     getattr(participant.stats, "first_inhibitor_assist", False)
                 data["red_player_first_inhibitor_kill_" + role] = \
                     getattr(participant.stats, "first_inhibitor_kill", False)
-                data["red_player_tower_assist_" + role] = \
+                data["red_player_first_tower_assist_" + role] = \
                     getattr(participant.stats, "first_tower_assist", False)
-                data["red_player_tower_kill_" + role] = \
+                data["red_player_first_tower_kill_" + role] = \
                     getattr(participant.stats, "first_tower_kill", False)
                 data["red_player_vision_score_" + role] = \
                     getattr(participant.stats, "vision_score", 0)
@@ -295,9 +295,9 @@ def collect_matches():
                     getattr(participant.stats, "first_inhibitor_assist", False)
                 data["blue_player_first_inhibitor_kill_" + role] = \
                     getattr(participant.stats, "first_inhibitor_kill", False)
-                data["blue_player_tower_assist_" + role] = \
+                data["blue_player_first_tower_assist_" + role] = \
                     getattr(participant.stats, "first_tower_assist", False)
-                data["blue_player_tower_kill_" + role] = \
+                data["blue_player_first_tower_kill_" + role] = \
                     getattr(participant.stats, "first_tower_kill", False)
                 data["blue_player_vision_score_" + role] = \
                     getattr(participant.stats, "vision_score", 0)
@@ -385,15 +385,18 @@ def collect_matches():
             unpulled_match_ids.remove(new_match_id)
             pulled_match_ids.add(new_match_id)
 
+            # for (k, v) in data.items():
+            #     print("dict[%s]=" % k, v)
+
             # Write match data to csv file
             with open("./../data/match_data.csv", "a", newline="") as f:
                 writer = csv.DictWriter(f, csv_header.data_headers)
+                #writer.writeheader()
                 writer.writerow(data)
             # Write time line data to csv file
             with open("./../data/timeline_data.csv", "a", newline="") as f:
                 writer = csv.DictWriter(f, csv_header.timeline_data_headers)
                 writer.writerow(timeline_data)
-
 
 
 if __name__ == "__main__":
