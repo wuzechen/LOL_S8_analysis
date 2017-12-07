@@ -77,29 +77,29 @@ def collect_matches():
                     "region": getattr(new_match, "region", region),
                     "game_type": getattr(new_match, "queue", "Queue.depreciated_ranked_solo_fives"),
                     "win": getattr(red, "win", False) and "red" or "blue",
-                    "red_win": getattr(red, "win", False),
+                    "red_win": str(getattr(red, "win", False)).lower(),
                     "red_baron_kills": getattr(red, "baron_kills", 0),
                     "red_dragon_kills": getattr(red, "dragon_kills", 0),
                     "red_rift_herald_kills": getattr(red, "rift_herald_kills", 0),
                     "red_inhibitor_kills": getattr(red, "inhibitor_kills", 0),
                     "red_tower_kills": getattr(red, "tower_kills", 0),
-                    "red_first_baron": getattr(red, "first_baron", False),
-                    "red_first_dragon": getattr(red, "first_dragon", False),
-                    "red_first_blood": getattr(red, "first_blood", False),
-                    "red_first_inhibitor": getattr(red, "first_inhibitor", False),
-                    "red_first_tower": getattr(red, "first_tower", False),
+                    "red_first_baron": str(getattr(red, "first_baron", False)).lower(),
+                    "red_first_dragon": str(getattr(red, "first_dragon", False)).lower(),
+                    "red_first_blood": str(getattr(red, "first_blood", False)).lower(),
+                    "red_first_inhibitor": str(getattr(red, "first_inhibitor", False)).lower(),
+                    "red_first_tower": str(getattr(red, "first_tower", False)).lower(),
                     "red_dominion_score": getattr(red, "dominion_score", 0),
-                    "blue_win": getattr(blue, "win", False),
+                    "blue_win": str(getattr(blue, "win", False)).lower(),
                     "blue_baron_kills": getattr(blue, "baron_kills", 0),
                     "blue_dragon_kills": getattr(blue, "dragon_kills", 0),
                     "blue_rift_herald_kills": getattr(blue, "rift_herald_kills", 0),
                     "blue_inhibitor_kills": getattr(blue, "inhibitor_kills", 0),
                     "blue_tower_kills": getattr(blue, "tower_kills", 0),
-                    "blue_first_baron": getattr(blue, "first_baron", False),
-                    "blue_first_dragon": getattr(blue, "first_dragon", False),
-                    "blue_first_blood": getattr(blue, "first_blood", False),
-                    "blue_first_inhibitor": getattr(blue, "first_inhibitor", False),
-                    "blue_first_tower": getattr(blue, "first_tower", False),
+                    "blue_first_baron": str(getattr(blue, "first_baron", False)).lower(),
+                    "blue_first_dragon": str(getattr(blue, "first_dragon", False)).lower(),
+                    "blue_first_blood": str(getattr(blue, "first_blood", False)).lower(),
+                    "blue_first_inhibitor": str(getattr(blue, "first_inhibitor", False)).lower(),
+                    "blue_first_tower": str(getattr(blue, "first_tower", False)).lower(),
                     "blue_dominion_score": getattr(blue, "dominion_score", 0),
                     }
             timeline_data = {"match_id": new_match_id}
@@ -153,17 +153,17 @@ def collect_matches():
                 data["red_player_panta_kills_" + role] = \
                     getattr(participant.stats, "penta_kills", 0)
                 data["red_player_first_blood_assist_" + role] = \
-                    getattr(participant.stats, "first_blood_assist", False)
+                    str(getattr(participant.stats, "first_blood_assist", False)).lower
                 data["red_player_first_blood_kill_" + role] = \
-                    getattr(participant.stats, "first_blood_kill", False)
+                    str(getattr(participant.stats, "first_blood_kill", False)).lower()
                 data["red_player_first_inhibitor_assist_" + role] = \
-                    getattr(participant.stats, "first_inhibitor_assist", False)
+                    str(getattr(participant.stats, "first_inhibitor_assist", False)).lower()
                 data["red_player_first_inhibitor_kill_" + role] = \
-                    getattr(participant.stats, "first_inhibitor_kill", False)
+                    str(getattr(participant.stats, "first_inhibitor_kill", False)).lower()
                 data["red_player_first_tower_assist_" + role] = \
-                    getattr(participant.stats, "first_tower_assist", False)
+                    str(getattr(participant.stats, "first_tower_assist", False)).lower()
                 data["red_player_first_tower_kill_" + role] = \
-                    getattr(participant.stats, "first_tower_kill", False)
+                    str(getattr(participant.stats, "first_tower_kill", False)).lower()
                 data["red_player_vision_score_" + role] = \
                     getattr(participant.stats, "vision_score", 0)
                 data["red_player_vision_wards_bought_in_game_" + role] = \
@@ -288,17 +288,17 @@ def collect_matches():
                 data["blue_player_panta_kills_" + role] = \
                     getattr(participant.stats, "penta_kills", 0)
                 data["blue_player_first_blood_assist_" + role] = \
-                    getattr(participant.stats, "first_blood_assist", False)
+                    str(getattr(participant.stats, "first_blood_assist", False)).lower()
                 data["blue_player_first_blood_kill_" + role] = \
-                    getattr(participant.stats, "first_blood_kill", False)
+                    str(getattr(participant.stats, "first_blood_kill", False)).lower()
                 data["blue_player_first_inhibitor_assist_" + role] = \
-                    getattr(participant.stats, "first_inhibitor_assist", False)
+                    str(getattr(participant.stats, "first_inhibitor_assist", False)).lower()
                 data["blue_player_first_inhibitor_kill_" + role] = \
-                    getattr(participant.stats, "first_inhibitor_kill", False)
+                    str(getattr(participant.stats, "first_inhibitor_kill", False)).lower()
                 data["blue_player_first_tower_assist_" + role] = \
-                    getattr(participant.stats, "first_tower_assist", False)
+                    str(getattr(participant.stats, "first_tower_assist", False)).lower()
                 data["blue_player_first_tower_kill_" + role] = \
-                    getattr(participant.stats, "first_tower_kill", False)
+                    str(getattr(participant.stats, "first_tower_kill", False)).lower()
                 data["blue_player_vision_score_" + role] = \
                     getattr(participant.stats, "vision_score", 0)
                 data["blue_player_vision_wards_bought_in_game_" + role] = \
