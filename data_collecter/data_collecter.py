@@ -99,7 +99,6 @@ def collect_matches():
             match_player_data = {}
             timelines = {}
             timeline_data = {}
-            event_data = {}
             for index in range(len(red.bans)):
                 match_data["red_ban" + str(index)] = red.bans[index] is not None and red.bans[index].id or -1
             for index in range(len(blue.bans)):
@@ -231,6 +230,8 @@ def collect_matches():
                 frames = getattr(participant.timeline, "frames", None)
                 if frames is not None:
                     for index, frame in enumerate(frames):
+                        if index in timelines:
+                            timeline_data = timelines[index]
                         timeline_data["match_id"] = new_match_id
                         timeline_data["frame"] = index
                         timeline_data["red_" + role + "_creep_score"] = getattr(frame, "creep_score", 0)
@@ -398,7 +399,6 @@ def collect_matches():
             # Write time line data to csv file
             with open("./../data/timeline_data.csv", "a", newline="") as f:
                 writer = csv.DictWriter(f, csv_header.timeline_data_headers)
-                writer.writeheader()
                 for index in timelines:
                     writer.writerow(timelines[index])
 
