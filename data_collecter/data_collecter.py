@@ -5,7 +5,8 @@ import cassiopeia as cass
 from cassiopeia.core import Summoner, MatchHistory, Match, Patch
 from cassiopeia.data import Queue
 import csv
-import re
+import copy
+import json
 import csv_header
 
 def filter_match_history(summoner, patch):
@@ -29,14 +30,6 @@ def get_role(role_string):
     else:
         role = "null"
     return role
-
-def time_convert(time_string):
-    matchObj = re.match(r'(.*)-end', time_string)
-    if matchObj:
-        end = int(matchObj.group(1)) + 10
-        return matchObj.group(1) + "-" + str(end)
-    else:
-        return time_string
 
 def collect_matches():
     initial_summoner_name = "夜空の三日月"
@@ -104,13 +97,15 @@ def collect_matches():
                     }
             match_players = []
             match_player_data = {}
-            timelines = []
-            timeline_data = {"match_id": new_match_id}
+            timelines = {}
+            timeline_data = {}
             event_data = {}
             for index in range(len(red.bans)):
                 match_data["red_ban" + str(index)] = red.bans[index] is not None and red.bans[index].id or -1
             for index in range(len(blue.bans)):
                 match_data["blue_ban" + str(index)] = blue.bans[index] is not None and blue.bans[index].id or -1
+
+            # match_player_data
             for participant in red.participants:
                 role = get_role(str(getattr(participant, "lane", "null")) + str(getattr(participant, "role", "null")))
                 if role == "null":
@@ -208,39 +203,35 @@ def collect_matches():
                 if items is not None:
                     for index, item in enumerate(items):
                         match_player_data["item" + str(index)] = getattr(item, "id", -1)
-                match_players.append(match_player_data)
-
                 creeps_per_min_deltas = getattr(participant.timeline, "creeps_per_min_deltas", None)
                 if creeps_per_min_deltas is not None:
-                    for time, value in creeps_per_min_deltas.items():
-                        match_player_data["creeps_per_min_deltas_" + time_convert(time)] = value
+                    match_player_data["creeps_per_min_deltas"] = json.dumps(creeps_per_min_deltas)
                 cs_diff_per_min_deltas = getattr(participant.timeline, "cs_diff_per_min_deltas", None)
                 if cs_diff_per_min_deltas is not None:
-                    for time, value in cs_diff_per_min_deltas.items():
-                        match_player_data["cs_diff_per_min_deltas_" + time_convert(time)] = value
+                    match_player_data["cs_diff_per_min_deltas"] = json.dumps(cs_diff_per_min_deltas)
                 damage_taken_diff_per_min_deltas = getattr(participant.timeline, "damage_taken_diff_per_min_deltas", None)
                 if damage_taken_diff_per_min_deltas is not None:
-                    for time, value in damage_taken_diff_per_min_deltas.items():
-                        match_player_data["damage_taken_diff_per_min_deltas_" + time_convert(time)] = value
+                    match_player_data["damage_taken_diff_per_min_deltas"] = json.dumps(damage_taken_diff_per_min_deltas)
                 damage_taken_per_min_deltas = getattr(participant.timeline, "damage_taken_per_min_deltas",None)
                 if damage_taken_per_min_deltas is not None:
-                    for time, value in damage_taken_per_min_deltas.items():
-                        match_player_data["damage_taken_per_min_deltas_" + time_convert(time)] = value
+                    match_player_data["damage_taken_per_min_deltas"] = json.dumps(damage_taken_per_min_deltas)
                 gold_per_min_deltas = getattr(participant.timeline, "gold_per_min_deltas", None)
                 if gold_per_min_deltas is not None:
-                    for time, value in gold_per_min_deltas.items():
-                        match_player_data["gold_per_min_deltas_" + time_convert(time)] = value
+                    match_player_data["gold_per_min_deltas"] = json.dumps(gold_per_min_deltas)
                 xp_per_min_deltas = getattr(participant.timeline, "xp_per_min_deltas", None)
                 if xp_per_min_deltas is not None:
-                    for time, value in xp_per_min_deltas.items():
-                        match_player_data["xp_per_min_deltas_" + time_convert(time)] = value
+                    match_player_data["xp_per_min_deltas"] = json.dumps(xp_per_min_deltas)
                 xp_diff_per_min_deltas = getattr(participant.timeline, "xp_diff_per_min_deltas", None)
                 if xp_diff_per_min_deltas is not None:
-                    for time, value in xp_per_min_deltas.items():
-                        match_player_data["xp_diff_per_min_deltas_" + time_convert(time)] = value
+                    match_player_data["xp_diff_per_min_deltas"] = json.dumps(xp_diff_per_min_deltas)
+                # deep copy
+                match_players.append(copy.deepcopy(match_player_data))
+
+                # timeline data
                 frames = getattr(participant.timeline, "frames", None)
                 if frames is not None:
                     for index, frame in enumerate(frames):
+                        timeline_data["match_id"] = new_match_id
                         timeline_data["frame"] = index
                         timeline_data["red_" + role + "_creep_score"] = getattr(frame, "creep_score", 0)
                         timeline_data["red_" + role + "_current_gold"] = getattr(frame, "current_gold", 0)
@@ -250,8 +241,144 @@ def collect_matches():
                         if position is not None:
                             timeline_data["red_" + role + "_positionX"] = position.x
                             timeline_data["red_" + role + "_positionY"] = position.y
-                        timelines.append(timeline_data)
+                        timelines[index] = copy.deepcopy(timeline_data)
 
+            for participant in blue.participants:
+                role = get_role(str(getattr(participant, "lane", "null")) + str(getattr(participant, "role", "null")))
+                if role == "null":
+                    continue
+                match_player_data = {"match_id": new_match_id, "role": role, "side": "blue"}
+                match_player_data["pick"] = \
+                    getattr(participant.champion, "id", -1)
+                match_player_data["player_id"] = \
+                    getattr(participant.summoner, "id", -1)
+                match_player_data["level"] = \
+                    getattr(participant, "rank_last_season", 0)
+                match_player_data["summoner_spell_d"] = \
+                    getattr(participant.summoner_spell_d, "id", -1)
+                match_player_data["summoner_spell_f"] = \
+                    getattr(participant.summoner_spell_f, "id", -1)
+                match_player_data["kill"] = \
+                    getattr(participant.stats, "kills", 0)
+                match_player_data["deaths"] = \
+                    getattr(participant.stats, "deaths", 0)
+                match_player_data["assists"] = \
+                    getattr(participant.stats, "assists", 0)
+                match_player_data["gold_earned"] = \
+                    getattr(participant.stats, "gold_earned", 0)
+                match_player_data["gold_spent"] = \
+                    getattr(participant.stats, "gold_spent", 0)
+                match_player_data["kda"] = \
+                    getattr(participant.stats, "kda", 0)
+                match_player_data["level"] = \
+                    getattr(participant.stats, "level", 0)
+                match_player_data["total_minions_killed"] = \
+                    getattr(participant.stats, "total_minions_killed", 0)
+                match_player_data["turret_kills"] = \
+                    getattr(participant.stats, "turret_kills", 0)
+                match_player_data["inhibitor_kills"] = \
+                    getattr(participant.stats, "inhibitor_kills", 0)
+                match_player_data["killing_sprees"] = \
+                    getattr(participant.stats, "killing_sprees", 0)
+                match_player_data["double_kills"] = \
+                    getattr(participant.stats, "double_kills", 0)
+                match_player_data["triple_kills"] = \
+                    getattr(participant.stats, "triple_kills", 0)
+                match_player_data["quadra_kills"] = \
+                    getattr(participant.stats, "quadra_kills", 0)
+                match_player_data["panta_kills"] = \
+                    getattr(participant.stats, "penta_kills", 0)
+                match_player_data["first_blood_assist"] = \
+                    str(getattr(participant.stats, "first_blood_assist", False)).lower()
+                match_player_data["first_blood_kill"] = \
+                    str(getattr(participant.stats, "first_blood_kill", False)).lower()
+                match_player_data["first_inhibitor_assist"] = \
+                    str(getattr(participant.stats, "first_inhibitor_assist", False)).lower()
+                match_player_data["first_inhibitor_kill"] = \
+                    str(getattr(participant.stats, "first_inhibitor_kill", False)).lower()
+                match_player_data["first_tower_assist"] = \
+                    str(getattr(participant.stats, "first_tower_assist", False)).lower()
+                match_player_data["first_tower_kill"] = \
+                    str(getattr(participant.stats, "first_tower_kill", False)).lower()
+                match_player_data["vision_score"] = \
+                    getattr(participant.stats, "vision_score", 0)
+                match_player_data["vision_wards_bought_in_game"] = \
+                    getattr(participant.stats, "vision_wards_bought_in_game", 0)
+                match_player_data["sight_wards_bought_in_game"] = \
+                    getattr(participant.stats, "sight_wards_bought_in_game", 0)
+                match_player_data["wards_killed"] = \
+                    getattr(participant.stats, "wards_killed", 0)
+                match_player_data["wards_placed"] = \
+                    getattr(participant.stats, "wards_placed", 0)
+                match_player_data["total_time_crowd_control_dealt"] = \
+                    getattr(participant.stats, "total_time_crowd_control_dealt", 0)
+                match_player_data["total_damage_dealt"] = \
+                    getattr(participant.stats, "total_damage_dealt", 0)
+                match_player_data["total_damage_dealt_to_champions"] = \
+                    getattr(participant.stats, "total_damage_dealt_to_champions", 0)
+                match_player_data["total_damage_taken"] = \
+                    getattr(participant.stats, "total_damage_taken", 0)
+                match_player_data["total_heal"] = \
+                    getattr(participant.stats, "total_heal", 0)
+                match_player_data["total_units_healed"] = \
+                    getattr(participant.stats, "total_units_healed", 0)
+                match_player_data["longest_time_spent_living"] = \
+                    getattr(participant.stats, "longest_time_spent_living", 0)
+                match_player_data["neutral_minions_killed"] = \
+                    getattr(participant.stats, "neutral_minions_killed", 0)
+                match_player_data["neutral_minions_killed_enemy_jungle"] = \
+                    getattr(participant.stats, "neutral_minions_killed_enemy_jungle", 0)
+                match_player_data["neutral_minions_killed_team_jungle"] = \
+                    getattr(participant.stats, "neutral_minions_killed_team_jungle", 0)
+                match_player_data["damage_dealt_to_objectives"] = \
+                    getattr(participant.stats, "damage_dealt_to_objectives", 0)
+                match_player_data["damage_dealt_to_turrets"] = \
+                    getattr(participant.stats, "damage_dealt_to_turrets", 0)
+                match_player_data["damage_self_mitigated"] = \
+                    getattr(participant.stats, "damage_self_mitigated", 0)
+                items = getattr(participant.stats, "item", None)
+                if items is not None:
+                    for index, item in enumerate(items):
+                        match_player_data["item" + str(index)] = getattr(item, "id", -1)
+                creeps_per_min_deltas = getattr(participant.timeline, "creeps_per_min_deltas", None)
+                if creeps_per_min_deltas is not None:
+                    match_player_data["creeps_per_min_deltas"] = json.dumps(creeps_per_min_deltas)
+                cs_diff_per_min_deltas = getattr(participant.timeline, "cs_diff_per_min_deltas", None)
+                if cs_diff_per_min_deltas is not None:
+                    match_player_data["cs_diff_per_min_deltas"] = json.dumps(cs_diff_per_min_deltas)
+                damage_taken_diff_per_min_deltas =\
+                    getattr(participant.timeline, "damage_taken_diff_per_min_deltas", None)
+                if damage_taken_diff_per_min_deltas is not None:
+                    match_player_data["damage_taken_diff_per_min_deltas"] = json.dumps(damage_taken_diff_per_min_deltas)
+                damage_taken_per_min_deltas = getattr(participant.timeline, "damage_taken_per_min_deltas", None)
+                if damage_taken_per_min_deltas is not None:
+                    match_player_data["damage_taken_per_min_deltas"] = json.dumps(damage_taken_per_min_deltas)
+                gold_per_min_deltas = getattr(participant.timeline, "gold_per_min_deltas", None)
+                if gold_per_min_deltas is not None:
+                    match_player_data["gold_per_min_deltas"] = json.dumps(gold_per_min_deltas)
+                xp_per_min_deltas = getattr(participant.timeline, "xp_per_min_deltas", None)
+                if xp_per_min_deltas is not None:
+                    match_player_data["xp_per_min_deltas"] = json.dumps(xp_per_min_deltas)
+                xp_diff_per_min_deltas = getattr(participant.timeline, "xp_diff_per_min_deltas", None)
+                if xp_diff_per_min_deltas is not None:
+                    match_player_data["xp_diff_per_min_deltas"] = json.dumps(xp_diff_per_min_deltas)
+                match_players.append(copy.deepcopy(match_player_data))
+
+                # timeline data
+                frames = getattr(participant.timeline, "frames", None)
+                if frames is not None:
+                    for index, frame in enumerate(frames):
+                        timeline_data = copy.deepcopy(timelines[index])
+                        timeline_data["blue_" + role + "_creep_score"] = getattr(frame, "creep_score", 0)
+                        timeline_data["blue_" + role + "_current_gold"] = getattr(frame, "current_gold", 0)
+                        timeline_data["blue_" + role + "_gold_earned"] = getattr(frame, "gold_earned", 0)
+                        timeline_data["blue_" + role + "_level"] = getattr(frame, "level", 0)
+                        position = getattr(frame, "position", None)
+                        if position is not None:
+                            timeline_data["blue_" + role + "_positionX"] = position.x
+                            timeline_data["blue_" + role + "_positionY"] = position.y
+                        # deep copy
+                        timelines[index] = copy.deepcopy(timeline_data)
                         
             # find next player
             for participant in new_match.participants:
@@ -260,13 +387,9 @@ def collect_matches():
             unpulled_match_ids.remove(new_match_id)
             pulled_match_ids.add(new_match_id)
 
-            # for (k, v) in data.items():
-            #     print("dict[%s]=" % k, v)
-
             # Write match data to csv file
             with open("./../data/match_data.csv", "a", newline="") as f:
                 writer = csv.DictWriter(f, csv_header.match_data_headers)
-                #writer.writeheader()
                 writer.writerow(match_data)
             with open("./../data/match_player_data.csv", "a", newline="") as f:
                 writer = csv.DictWriter(f, csv_header.match_player_data_headers)
@@ -275,8 +398,9 @@ def collect_matches():
             # Write time line data to csv file
             with open("./../data/timeline_data.csv", "a", newline="") as f:
                 writer = csv.DictWriter(f, csv_header.timeline_data_headers)
-                for timeline_data in timelines:
-                    writer.writerow(timeline_data)
+                writer.writeheader()
+                for index in timelines:
+                    writer.writerow(timelines[index])
 
 
 if __name__ == "__main__":

@@ -8,8 +8,8 @@ match_data_headers = ["match_id", "creation", "duration", "patch", "region", "ga
                       "red_ban0", "red_ban1", "red_ban2", "red_ban3", "red_ban4",
                       "blue_ban0", "blue_ban1", "blue_ban2", "blue_ban3", "blue_ban4"]
 
-match_player_data_headers = ["match_id", "role", "side" , "player_id", "level", "red_summoner_spell_d",
-                             "red_summoner_spell_f", "kill", "deaths", "assists",
+match_player_data_headers = ["match_id", "role", "side", "pick", "player_id", "level", "summoner_spell_d",
+                             "summoner_spell_f", "kill", "deaths", "assists",
                              "gold_earned", "gold_spent", "kda", "level",
                              "total_minions_killed", "turret_kills", "inhibitor_kills",
                              "killing_sprees", "double_kills", "triple_kills", "quadra_kills", "panta_kills",
@@ -20,7 +20,25 @@ match_player_data_headers = ["match_id", "role", "side" , "player_id", "level", 
                              "total_heal", "total_units_healed", "longest_time_spent_living", "neutral_minions_killed",
                              "neutral_minions_killed_enemy_jungle", "neutral_minions_killed_team_jungle",
                              "damage_dealt_to_objectives", "damage_dealt_to_turrets", "damage_self_mitigated",
-                             "item0", "item1", "item2", "item3", "item4", "item5"]
+                             "item0", "item1", "item2", "item3", "item4", "item5",
+                             "creeps_per_min_deltas", "cs_diff_per_min_deltas", "damage_taken_diff_per_min_deltas",
+                             "damage_taken_per_min_deltas", "gold_per_min_deltas", "xp_per_min_deltas",
+                             "xp_diff_per_min_deltas"]
 
-timeline_data_headers = []
+timeline_data_headers = ["match_id", "frame", "red_top_creep_score", "red_top_current_gold", "red_top_gold_earned",
+                         "red_top_level", "red_top_positionX", "red_top_positionY", "red_jug_creep_score",
+                         "red_jug_current_gold", "red_jug_gold_earned", "red_jug_level", "red_jug_positionX",
+                         "red_jug_positionY", "red_mid_creep_score", "red_mid_current_gold", "red_mid_gold_earned",
+                         "red_mid_level", "red_mid_positionX", "red_mid_positionY", "red_adc_creep_score",
+                         "red_adc_current_gold", "red_adc_gold_earned", "red_adc_level", "red_adc_positionX",
+                         "red_adc_positionY", "red_sup_creep_score", "red_sup_current_gold", "red_sup_gold_earned",
+                         "red_sup_level", "red_sup_positionX", "red_sup_positionY", "blue_top_creep_score",
+                         "blue_top_current_gold", "blue_top_gold_earned", "blue_top_level", "blue_top_positionX",
+                         "blue_top_positionY", "blue_jug_creep_score", "blue_jug_current_gold", "blue_jug_gold_earned",
+                         "blue_jug_level", "blue_jug_positionX", "blue_jug_positionY", "blue_mid_creep_score",
+                         "blue_mid_current_gold", "blue_mid_gold_earned", "blue_mid_level", "blue_mid_positionX",
+                         "blue_mid_positionY", "blue_adc_creep_score", "blue_adc_current_gold", "blue_adc_gold_earned",
+                         "blue_adc_level", "blue_adc_positionX", "blue_adc_positionY", "blue_sup_creep_score",
+                         "blue_sup_current_gold", "blue_sup_gold_earned", "blue_sup_level", "blue_sup_positionX",
+                         "blue_sup_positionY"]
 
