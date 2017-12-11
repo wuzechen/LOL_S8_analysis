@@ -13,7 +13,8 @@ def filter_match_history(summoner, patch):
     end_time = patch.end
     if end_time is None:
         end_time = datetime.datetime.now()
-    match_history = MatchHistory(summoner=summoner, region=summoner.region, queues={Queue.ranked_solo_fives}, begin_time=patch.start, end_time=end_time)
+    match_history = MatchHistory(summoner=summoner, region=summoner.region,
+                                 queues={Queue.ranked_solo_fives}, begin_time=patch.start, end_time=end_time)
     return match_history
 
 def get_role(role_string):
@@ -253,7 +254,7 @@ def collect_matches():
                     getattr(participant.champion, "id", -1)
                 match_player_data["player_id"] = \
                     getattr(participant.summoner, "id", -1)
-                match_player_data["level"] = \
+                match_player_data["rank"] = \
                     getattr(participant, "rank_last_season", 0)
                 match_player_data["summoner_spell_d"] = \
                     getattr(participant.summoner_spell_d, "id", -1)
@@ -383,22 +384,28 @@ def collect_matches():
                         
             # find next player
             for participant in new_match.participants:
-                if participant.summoner.id not in pulled_summoner_ids and participant.summoner.id not in unpulled_summoner_ids:
+                if participant.summoner.id not in pulled_summoner_ids and\
+                        participant.summoner.id not in unpulled_summoner_ids:
                     unpulled_summoner_ids.add(participant.summoner.id)
             unpulled_match_ids.remove(new_match_id)
             pulled_match_ids.add(new_match_id)
 
             # Write match data to csv file
-            with open("./../data/match_data.csv", "a", newline="") as f:
-                writer = csv.DictWriter(f, csv_header.match_data_headers)
+            # create new csv file daily
+            now = datetime.datetime.now()
+            with open("./../data/match_data_" + now.strftime("%Y-%m-%d") + ".csv", "a", newline="") as f:
+                writer = csv.DictWriter(f, csv_header.match_data_headers,
+                                        delimiter=';', quoting=csv.QUOTE_NONE, quotechar='')
                 writer.writerow(match_data)
-            with open("./../data/match_player_data.csv", "a", newline="") as f:
-                writer = csv.DictWriter(f, csv_header.match_player_data_headers)
+            with open("./../data/match_player_data_" + now.strftime("%Y-%m-%d") + ".csv", "a", newline="") as f:
+                writer = csv.DictWriter(f, csv_header.match_player_data_headers,
+                                        delimiter=';', quoting=csv.QUOTE_NONE, quotechar='')
                 for match_player_data in match_players:
                     writer.writerow(match_player_data)
             # Write time line data to csv file
-            with open("./../data/timeline_data.csv", "a", newline="") as f:
-                writer = csv.DictWriter(f, csv_header.timeline_data_headers)
+            with open("./../data/timeline_data_" + now.strftime("%Y-%m-%d") + ".csv", "a", newline="") as f:
+                writer = csv.DictWriter(f, csv_header.timeline_data_headers,
+                                        delimiter=';', quoting=csv.QUOTE_NONE, quotechar='')
                 for index in timelines:
                     writer.writerow(timelines[index])
 

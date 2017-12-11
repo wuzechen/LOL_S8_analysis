@@ -8,7 +8,7 @@ match_data_headers = ["match_id", "creation", "duration", "patch", "region", "ga
                       "red_ban0", "red_ban1", "red_ban2", "red_ban3", "red_ban4",
                       "blue_ban0", "blue_ban1", "blue_ban2", "blue_ban3", "blue_ban4"]
 
-match_player_data_headers = ["match_id", "role", "side", "pick", "player_id", "level", "summoner_spell_d",
+match_player_data_headers = ["match_id", "role", "side", "pick", "player_id", "rank", "summoner_spell_d",
                              "summoner_spell_f", "kill", "deaths", "assists",
                              "gold_earned", "gold_spent", "kda", "level",
                              "total_minions_killed", "turret_kills", "inhibitor_kills",
