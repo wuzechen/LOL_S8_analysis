@@ -20,16 +20,16 @@ PUT /lol_match_data
          "type":"integer"
         },
         "patch": {
-         "type":"text"
+         "type":"keyword"
         },
         "region": {
-         "type":"text"
+         "type":"keyword"
         },
         "game_type": {
-         "type":"text"
+         "type":"keyword"
         },
         "win": {
-         "type":"text"
+         "type":"keyword"
         },
         "red_win": {
          "type":"boolean"
@@ -104,34 +104,34 @@ PUT /lol_match_data
          "type":"float"
         },
         "red_ban0": {
-         "type":"text"
+         "type":"keyword"
         },
         "red_ban1": {
-         "type":"text"
+         "type":"keyword"
         },
         "red_ban2": {
-         "type":"text"
+         "type":"keyword"
         },
         "red_ban3": {
-         "type":"text"
+         "type":"keyword"
         },
         "red_ban4": {
-         "type":"text"
+         "type":"keyword"
         },
         "blue_ban0": {
-         "type":"text"
+         "type":"keyword"
         },
         "blue_ban1": {
-         "type":"text"
+         "type":"keyword"
         },
         "blue_ban2": {
-         "type":"text"
+         "type":"keyword"
         },
         "blue_ban3": {
-         "type":"text"
+         "type":"keyword"
         },
         "blue_ban4": {
-         "type":"text"
+         "type":"keyword"
         }
       }
     }
@@ -154,25 +154,25 @@ PUT /lol_match_player_data
          "type":"text"
         },
         "role": {
-         "type":"text"
+         "type":"keyword"
         },
         "side": {
-         "type":"text"
+         "type":"keyword"
         },
         "pick": {
-         "type":"text"
+         "type":"keyword"
         },
         "player_id": {
-         "type":"text"
+         "type":"keyword"
         },
         "rank": {
-         "type":"text"
+         "type":"keyword"
         },
         "summoner_spell_d": {
-         "type":"text"
+         "type":"keyword"
         },
         "summoner_spell_f": {
-         "type":"text"
+         "type":"keyword"
         },
         "kill": {
          "type":"integer"
@@ -292,22 +292,22 @@ PUT /lol_match_player_data
          "type":"integer"
         },
         "item0": {
-         "type":"text"
+         "type":"keyword"
         },
         "item1": {
-         "type":"text"
+         "type":"keyword"
         },
         "item2": {
-         "type":"text"
+         "type":"keyword"
         },
         "item3": {
-         "type":"text"
+         "type":"keyword"
         },
         "item4": {
-         "type":"text"
+         "type":"keyword"
         },
         "item5": {
-         "type":"text"
+         "type":"keyword"
         },
         "creeps_per_min_deltas": {
          "type":"nested",
