@@ -43,7 +43,8 @@ def collect_matches():
     patch_722 = Patch.from_str(patch, region=region)
 
     unpulled_summoner_ids = init.unpulled_summoner_ids()
-    unpulled_summoner_ids.add(summoner.id)
+    if len(unpulled_summoner_ids) == 0:
+        unpulled_summoner_ids.add(summoner.id)
     pulled_summoner_ids = init.pulled_summoner_ids()
 
     unpulled_match_ids = init.unpulled_match_ids()
