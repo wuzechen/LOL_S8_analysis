@@ -33,9 +33,9 @@
         },
         "500": {
             "strategy": "exponential_backoff",
-            "initial_backoff": 1.0,
-            "backoff_factor": 2.0,
-            "max_attempts": 4
+            "initial_backoff": 5.0,
+            "backoff_factor": 3.0,
+            "max_attempts": 10
         },
         "503": {
             "strategy": "exponential_backoff",
@@ -44,7 +44,10 @@
             "max_attempts": 4
         },
         "timeout": {
-            "strategy": "throw"
+            "strategy": "exponential_backoff",
+            "initial_backoff": 5.0,
+            "backoff_factor": 3.0,
+            "max_attempts": 10
         },
         "403": {
             "strategy": "throw"

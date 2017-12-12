@@ -8,6 +8,8 @@ import csv
 import copy
 import json
 import csv_header
+import init_history as init
+import log_history as log
 
 def filter_match_history(summoner, patch):
     end_time = patch.end
@@ -33,19 +35,21 @@ def get_role(role_string):
     return role
 
 def collect_matches():
-    initial_summoner_name = "夜空の三日月"
-    region = "JP"
+    initial_summoner_name = "Hide on bush"
+    region = "KR"
     patch = "7.22"
 
     summoner = Summoner(name=initial_summoner_name, region=region)
     patch_722 = Patch.from_str(patch, region=region)
 
-    unpulled_summoner_ids = SortedList([summoner.id])
-    pulled_summoner_ids = SortedList()
+    unpulled_summoner_ids = init.unpulled_summoner_ids()
+    unpulled_summoner_ids.add(summoner.id)
+    pulled_summoner_ids = init.pulled_summoner_ids()
 
-    unpulled_match_ids = SortedList()
-    pulled_match_ids = SortedList()
+    unpulled_match_ids = init.unpulled_match_ids()
+    pulled_match_ids = init.unpulled_match_ids()
 
+    count = 0
     while unpulled_summoner_ids:
         # Get a random summoner from our list of unpulled summoners and pull their match history
         new_summoner_id = random.choice(unpulled_summoner_ids)
@@ -390,6 +394,14 @@ def collect_matches():
             unpulled_match_ids.remove(new_match_id)
             pulled_match_ids.add(new_match_id)
 
+            count += 1
+
+            if count > 20:
+                log.unpulled_summoner_ids(unpulled_summoner_ids)
+                log.pulled_summoner_ids(pulled_summoner_ids)
+                log.unpulled_match_ids(unpulled_match_ids)
+                log.pulled_match_ids(pulled_match_ids)
+                count = 0
             # Write match data to csv file
             # create new csv file daily
             now = datetime.datetime.now()
