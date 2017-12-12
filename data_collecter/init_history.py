@@ -6,7 +6,7 @@ def unpulled_summoner_ids():
     try:
         lines = process_file.readlines()
         for line in lines:
-            unpulled_summoner_ids.add(line)
+            unpulled_summoner_ids.add(int(line))
     finally:
         process_file.close()
     return unpulled_summoner_ids
@@ -17,7 +17,7 @@ def pulled_summoner_ids():
     try:
         lines = process_file.readlines()
         for line in lines:
-            pulled_summoner_ids.add(line)
+            pulled_summoner_ids.add(int(line))
     finally:
         process_file.close()
     return pulled_summoner_ids
@@ -28,7 +28,7 @@ def unpulled_match_ids():
     try:
         lines = process_file.readlines()
         for line in lines:
-            unpulled_match_ids.add(line)
+            unpulled_match_ids.add(int(line))
     finally:
         process_file.close()
     return unpulled_match_ids
@@ -39,7 +39,7 @@ def pulled_match_ids():
     try:
         lines = process_file.readlines()
         for line in lines:
-            pulled_match_ids.add(line)
+            pulled_match_ids.add(int(line))
     finally:
         process_file.close()
     return pulled_match_ids
