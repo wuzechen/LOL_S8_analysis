@@ -236,6 +236,8 @@ def collect_matches():
                 frames = getattr(participant.timeline, "frames", None)
                 if frames is not None:
                     for index, frame in enumerate(frames):
+                        if frame is None:
+                            continue
                         if index in timelines:
                             timeline_data = timelines[index]
                         timeline_data["match_id"] = new_match_id
@@ -375,6 +377,8 @@ def collect_matches():
                 frames = getattr(participant.timeline, "frames", None)
                 if frames is not None:
                     for index, frame in enumerate(frames):
+                        if frame is None:
+                            continue
                         timeline_data = copy.deepcopy(timelines.get(index))
                         timeline_data["blue_" + role + "_creep_score"] = getattr(frame, "creep_score", 0)
                         timeline_data["blue_" + role + "_current_gold"] = getattr(frame, "current_gold", 0)
