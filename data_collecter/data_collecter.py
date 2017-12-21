@@ -12,9 +12,7 @@ import init_history as init
 import log_history as log
 
 def filter_match_history(summoner, patch):
-    end_time = patch.end
-    if end_time is None:
-        end_time = datetime.datetime.now()
+    end_time = datetime.datetime.now()
     match_history = MatchHistory(summoner=summoner, region=summoner.region,
                                  queues={Queue.ranked_solo_fives}, begin_time=patch.start, end_time=end_time)
     return match_history
@@ -239,7 +237,9 @@ def collect_matches():
                         if frame is None:
                             continue
                         if index in timelines:
-                            timeline_data = timelines[index]
+                            timeline_data = timelines.get(index)
+                        if timeline_data is None:
+                            timeline_data = {}
                         timeline_data["match_id"] = new_match_id
                         timeline_data["frame"] = index
                         timeline_data["red_" + role + "_creep_score"] = getattr(frame, "creep_score", 0)
@@ -251,6 +251,7 @@ def collect_matches():
                             timeline_data["red_" + role + "_positionX"] = position.x
                             timeline_data["red_" + role + "_positionY"] = position.y
                         timelines[index] = copy.deepcopy(timeline_data)
+                        timeline_data = {}
 
             for participant in blue.participants:
                 role = get_role(str(getattr(participant, "lane", "null")) + str(getattr(participant, "role", "null")))
@@ -379,7 +380,12 @@ def collect_matches():
                     for index, frame in enumerate(frames):
                         if frame is None:
                             continue
-                        timeline_data = copy.deepcopy(timelines.get(index))
+                        if index in timelines:
+                            timeline_data = timelines.get(index)
+                        if timeline_data is None:
+                            timeline_data = {}
+                        timeline_data["match_id"] = new_match_id
+                        timeline_data["frame"] = index
                         timeline_data["blue_" + role + "_creep_score"] = getattr(frame, "creep_score", 0)
                         timeline_data["blue_" + role + "_current_gold"] = getattr(frame, "current_gold", 0)
                         timeline_data["blue_" + role + "_gold_earned"] = getattr(frame, "gold_earned", 0)
@@ -390,6 +396,7 @@ def collect_matches():
                             timeline_data["blue_" + role + "_positionY"] = position.y
                         # deep copy
                         timelines[index] = copy.deepcopy(timeline_data)
+                        timeline_data = {}
                         
             # find next player
             for participant in new_match.participants:
