@@ -32,9 +32,7 @@ def get_role(role_string):
         role = "null"
     return role
 
-def collect_matches():
-    initial_summoner_name = "Hide on bush"
-    region = "KR"
+def collect_matches(initial_summoner_name, region):
     patch = "7.22"
 
     summoner = Summoner(name=initial_summoner_name, region=region)
@@ -401,7 +399,7 @@ def collect_matches():
             # find next player
             for participant in new_match.participants:
                 if participant.summoner.id not in pulled_summoner_ids and\
-                        participant.summoner.id not in unpulled_summoner_ids:
+                        participant.summoner.id not in unpulled_summoner_ids and len(unpulled_summoner_ids) < 1000:
                     unpulled_summoner_ids.add(participant.summoner.id)
             unpulled_match_ids.remove(new_match_id)
             pulled_match_ids.add(new_match_id)
@@ -438,4 +436,4 @@ if __name__ == "__main__":
     #cass.set_riot_api_key("")  # This overrides the value set in your configuration/settings.
     cass.apply_settings("setting.json")
     #cass.set_default_region("JP")
-    collect_matches()
+    collect_matches("Hide on Bush", "KR")
