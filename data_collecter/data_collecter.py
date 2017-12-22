@@ -7,9 +7,9 @@ from cassiopeia.data import Queue
 import csv
 import copy
 import json
-import csv_header
-import init_history as init
-import log_history as log
+import data_collecter.init.csv_header as csv_header
+import data_collecter.init.init_history as init
+import data_collecter.init.log_history as log
 
 def filter_match_history(summoner, patch):
     end_time = datetime.datetime.now()
@@ -38,13 +38,13 @@ def collect_matches(initial_summoner_name, region):
     summoner = Summoner(name=initial_summoner_name, region=region)
     patch_722 = Patch.from_str(patch, region=region)
 
-    unpulled_summoner_ids = init.unpulled_summoner_ids()
+    unpulled_summoner_ids = init.unpulled_summoner_ids(region)
     if len(unpulled_summoner_ids) == 0:
         unpulled_summoner_ids.add(summoner.id)
-    pulled_summoner_ids = init.pulled_summoner_ids()
+    pulled_summoner_ids = init.pulled_summoner_ids(region)
 
-    unpulled_match_ids = init.unpulled_match_ids()
-    pulled_match_ids = init.unpulled_match_ids()
+    unpulled_match_ids = init.unpulled_match_ids(region)
+    pulled_match_ids = init.unpulled_match_ids(region)
 
     count = 0
     while unpulled_summoner_ids:
@@ -407,10 +407,10 @@ def collect_matches(initial_summoner_name, region):
             count += 1
 
             if count > 20:
-                log.unpulled_summoner_ids(unpulled_summoner_ids)
-                log.pulled_summoner_ids(pulled_summoner_ids)
-                log.unpulled_match_ids(unpulled_match_ids)
-                log.pulled_match_ids(pulled_match_ids)
+                log.unpulled_summoner_ids(unpulled_summoner_ids, region)
+                log.pulled_summoner_ids(pulled_summoner_ids, region)
+                log.unpulled_match_ids(unpulled_match_ids, region)
+                log.pulled_match_ids(pulled_match_ids, region)
                 count = 0
             # Write match data to csv file
             # create new csv file daily
