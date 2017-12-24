@@ -7,9 +7,9 @@ from cassiopeia.data import Queue
 import csv
 import copy
 import json
-import data_collecter.init.csv_header as csv_header
-import data_collecter.init.init_history as init
-import data_collecter.init.log_history as log
+import init.csv_header as csv_header
+import init.init_history as init
+import init.log_history as log
 
 def filter_match_history(summoner, patch):
     end_time = datetime.datetime.now()
@@ -32,9 +32,7 @@ def get_role(role_string):
         role = "null"
     return role
 
-def collect_matches(initial_summoner_name, region):
-    patch = "7.22"
-
+def collect_matches(initial_summoner_name, region, patch):
     summoner = Summoner(name=initial_summoner_name, region=region)
     patch_722 = Patch.from_str(patch, region=region)
 
@@ -436,4 +434,4 @@ if __name__ == "__main__":
     #cass.set_riot_api_key("")  # This overrides the value set in your configuration/settings.
     cass.apply_settings("setting.json")
     #cass.set_default_region("JP")
-    collect_matches("Hide on Bush", "KR")
+    collect_matches("Hide on Bush", "KR", "7.22")
