@@ -11,6 +11,9 @@ import init.csv_header as csv_header
 import init.init_history as init
 import init.log_history as log
 import lol_info.role as role_info
+import os
+
+curpath = os.path.abspath(os.curdir)
 
 def filter_match_history(summoner, patch):
     end_time = datetime.datetime.now()
@@ -391,7 +394,7 @@ def collect_matches(initial_summoner_name, region, patch):
             pulled_match_ids.add(new_match_id)
 
             count += 1
-
+            print("call {0} {1}".format(region, count))
             if count > 20:
                 log.unpulled_summoner_ids(unpulled_summoner_ids, region)
                 log.pulled_summoner_ids(pulled_summoner_ids, region)
@@ -401,17 +404,17 @@ def collect_matches(initial_summoner_name, region, patch):
             # Write match data to csv file
             # create new csv file daily
             now = datetime.datetime.now()
-            with open("./../data/match_data_" + now.strftime("%Y-%m-%d") + ".csv", "a", newline="") as f:
+            with open(os.path.join(curpath, "./../data/match_data_" + now.strftime("%Y-%m-%d") + ".csv"), "a", newline="") as f:
                 writer = csv.DictWriter(f, csv_header.match_data_headers,
                                         delimiter=';', quoting=csv.QUOTE_NONE, quotechar='')
                 writer.writerow(match_data)
-            with open("./../data/match_player_data_" + now.strftime("%Y-%m-%d") + ".csv", "a", newline="") as f:
+            with open(os.path.join(curpath,"./../data/match_player_data_" + now.strftime("%Y-%m-%d") + ".csv"), "a", newline="") as f:
                 writer = csv.DictWriter(f, csv_header.match_player_data_headers,
                                         delimiter=';', quoting=csv.QUOTE_NONE, quotechar='')
                 for match_player_data in match_players:
                     writer.writerow(match_player_data)
             # Write time line data to csv file
-            with open("./../data/timeline_data_" + now.strftime("%Y-%m-%d") + ".csv", "a", newline="") as f:
+            with open(os.path.join(curpath,"./../data/timeline_data_" + now.strftime("%Y-%m-%d") + ".csv"), "a", newline="") as f:
                 writer = csv.DictWriter(f, csv_header.timeline_data_headers,
                                         delimiter=';', quoting=csv.QUOTE_NONE, quotechar='')
                 for index in timelines:

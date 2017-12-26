@@ -1,6 +1,7 @@
 import data_collecter.lol_info.region as region_info
 from elasticsearch import Elasticsearch
 import certifi
+import os
 
 es = Elasticsearch(['https://0ba6135ae8b7ed9a9b63c138a33b86c7.us-west-2.aws.found.io'],
                    port=9243,
@@ -42,14 +43,15 @@ def scan_match_id(region):
 
     es.clear_scroll(scroll_id=res['_scroll_id'])
 
-    file = open("./../data_collecter/history/pulled_match_ids_" + region + ".txt", "w+")
+    path = os.path.join(os.path.abspath(os.curdir), "./../data_collecter/history/pulled_match_ids_" + region + ".txt")
+    file = open(path, "w+")
     for id in result_array:
         file.write(str(id) + '\n')
     print("{0} Total match numbers: {1}".format(region, count))
 
 if __name__ == "__main__":
-    # scan_match_id("JP")
-    # scan_match_id("KR")
+    scan_match_id("JP")
+    scan_match_id("KR")
     scan_match_id("NA")
     scan_match_id("EUW")
 
