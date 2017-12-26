@@ -11,6 +11,7 @@ class collecterThread (threading.Thread):
         self.patch = patch
 
     def run(self):
+        print("crate thread {0}".format(self.region))
         while True:
             data_collecter.collect_matches(self.initial_summoner_name, self.region, self.patch)
 
