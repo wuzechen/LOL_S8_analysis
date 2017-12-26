@@ -1,0 +1,651 @@
+PUT /lol_match_data
+{
+  "settings": {
+    "index": {
+      "number_of_shards": "10",
+      "number_of_replicas":"1",
+      "refresh_interval": "5s"
+    }
+  },
+  "mappings": {
+    "match":{
+      "properties": {
+        "match_id": {
+         "type":"text"
+        },
+        "creation": {
+         "type":"date"
+        },
+        "duration": {
+         "type":"integer"
+        },
+        "patch": {
+         "type":"keyword"
+        },
+        "region": {
+         "type":"keyword"
+        },
+        "game_type": {
+         "type":"keyword"
+        },
+        "win": {
+         "type":"keyword"
+        },
+        "red_win": {
+         "type":"boolean"
+        },
+        "red_baron_kills": {
+         "type":"integer"
+        },
+        "red_dragon_kills": {
+         "type":"integer"
+        },
+        "red_rift_herald_kills": {
+         "type":"integer"
+        },
+        "red_inhibitor_kills": {
+         "type":"integer"
+        },
+        "red_tower_kills": {
+         "type":"integer"
+        },
+        "red_first_baron": {
+         "type":"boolean"
+        },
+        "red_first_dragon": {
+         "type":"boolean"
+        },
+        "red_first_blood": {
+         "type":"boolean"
+        },
+        "red_first_inhibitor": {
+         "type":"boolean"
+        },
+        "red_first_tower": {
+         "type":"boolean"
+        },
+        "red_dominion_score": {
+         "type":"float"
+        },
+        "blue_win": {
+         "type":"boolean"
+        },
+        "blue_baron_kills": {
+         "type":"integer"
+        },
+        "blue_dragon_kills": {
+         "type":"integer"
+        },
+        "blue_rift_herald_kills": {
+         "type":"integer"
+        },
+        "blue_inhibitor_kills": {
+         "type":"integer"
+        },
+        "blue_tower_kills": {
+         "type":"integer"
+        },
+        "blue_first_baron": {
+         "type":"boolean"
+        },
+        "blue_first_dragon": {
+         "type":"boolean"
+        },
+        "blue_first_blood": {
+         "type":"boolean"
+        },
+        "blue_first_inhibitor": {
+         "type":"boolean"
+        },
+        "blue_first_tower": {
+         "type":"boolean"
+        },
+        "blue_dominion_score": {
+         "type":"float"
+        },
+        "red_ban0": {
+         "type":"keyword"
+        },
+        "red_ban1": {
+         "type":"keyword"
+        },
+        "red_ban2": {
+         "type":"keyword"
+        },
+        "red_ban3": {
+         "type":"keyword"
+        },
+        "red_ban4": {
+         "type":"keyword"
+        },
+        "blue_ban0": {
+         "type":"keyword"
+        },
+        "blue_ban1": {
+         "type":"keyword"
+        },
+        "blue_ban2": {
+         "type":"keyword"
+        },
+        "blue_ban3": {
+         "type":"keyword"
+        },
+        "blue_ban4": {
+         "type":"keyword"
+        }
+      }
+    }
+  }
+}
+
+PUT /lol_match_player_data
+{
+  "settings": {
+    "index": {
+      "number_of_shards": "10",
+      "number_of_replicas":"1",
+      "refresh_interval": "5s"
+    }
+  },
+  "mappings": {
+    "match_player":{
+      "properties": {
+        "match_id": {
+         "type":"text"
+        },
+        "role": {
+         "type":"keyword"
+        },
+        "side": {
+         "type":"keyword"
+        },
+        "pick": {
+         "type":"keyword"
+        },
+        "player_id": {
+         "type":"keyword"
+        },
+        "rank": {
+         "type":"keyword"
+        },
+        "summoner_spell_d": {
+         "type":"keyword"
+        },
+        "summoner_spell_f": {
+         "type":"keyword"
+        },
+        "kill": {
+         "type":"integer"
+        },
+        "deaths": {
+         "type":"integer"
+        },
+        "assists": {
+         "type":"integer"
+        },
+        "gold_earned": {
+         "type":"integer"
+        },
+        "gold_spent": {
+         "type":"integer"
+        },
+        "kda": {
+         "type":"float"
+        },
+        "level": {
+         "type":"integer"
+        },
+        "total_minions_killed": {
+         "type":"integer"
+        },
+        "turret_kills": {
+         "type":"integer"
+        },
+        "inhibitor_kills": {
+         "type":"integer"
+        },
+        "killing_sprees": {
+         "type":"integer"
+        },
+        "double_kills": {
+         "type":"integer"
+        },
+        "triple_kills": {
+         "type":"integer"
+        },
+        "quadra_kills": {
+         "type":"integer"
+        },
+        "panta_kills": {
+         "type":"integer"
+        },
+        "first_blood_assist": {
+         "type":"boolean"
+        },
+        "first_blood_kill": {
+         "type":"boolean"
+        },
+        "first_inhibitor_assist": {
+         "type":"boolean"
+        },
+        "first_inhibitor_kill": {
+         "type":"boolean"
+        },
+        "first_tower_assist": {
+         "type":"boolean"
+        },
+        "first_tower_kill": {
+         "type":"boolean"
+        },
+        "vision_score": {
+         "type":"float"
+        },
+        "vision_wards_bought_in_game": {
+         "type":"integer"
+        },
+        "sight_wards_bought_in_game": {
+         "type":"integer"
+        },
+        "wards_killed": {
+         "type":"integer"
+        },
+        "wards_placed": {
+         "type":"integer"
+        },
+        "total_time_crowd_control_dealt": {
+         "type":"float"
+        },
+        "total_damage_dealt": {
+         "type":"integer"
+        },
+        "total_damage_dealt_to_champions": {
+         "type":"integer"
+        },
+        "total_damage_taken": {
+         "type":"integer"
+        },
+        "total_heal": {
+         "type":"integer"
+        },
+        "total_units_healed": {
+         "type":"integer"
+        },
+        "longest_time_spent_living": {
+         "type":"integer"
+        },
+        "neutral_minions_killed": {
+         "type":"integer"
+        },
+        "neutral_minions_killed_enemy_jungle": {
+         "type":"integer"
+        },
+        "neutral_minions_killed_team_jungle": {
+         "type":"integer"
+        },
+        "damage_dealt_to_objectives": {
+         "type":"integer"
+        },
+        "damage_dealt_to_turrets": {
+         "type":"integer"
+        },
+        "damage_self_mitigated": {
+         "type":"integer"
+        },
+        "item0": {
+         "type":"keyword"
+        },
+        "item1": {
+         "type":"keyword"
+        },
+        "item2": {
+         "type":"keyword"
+        },
+        "item3": {
+         "type":"keyword"
+        },
+        "item4": {
+         "type":"keyword"
+        },
+        "item5": {
+         "type":"keyword"
+        },
+        "creeps_per_min_deltas": {
+         "type":"nested",
+         "properties": {
+            "0-10": { "type": "float" },
+            "10-20": { "type": "float" },
+            "20-30": { "type": "float" },
+            "30-40": { "type": "float" },
+            "40-50": { "type": "float" },
+            "50-60": { "type": "float" },
+            "60-70": { "type": "float" },
+            "10-end": { "type": "float" },
+            "20-end": { "type": "float" },
+            "30-end": { "type": "float" },
+            "40-end": { "type": "float" },
+            "50-end": { "type": "float" },
+            "60-end": { "type": "float" },
+            "70-end": { "type": "float" }
+          }
+        },
+        "cs_diff_per_min_deltas": {
+         "type":"nested",
+         "properties": {
+            "0-10": { "type": "float" },
+            "10-20": { "type": "float" },
+            "20-30": { "type": "float" },
+            "30-40": { "type": "float" },
+            "40-50": { "type": "float" },
+            "50-60": { "type": "float" },
+            "60-70": { "type": "float" },
+            "10-end": { "type": "float" },
+            "20-end": { "type": "float" },
+            "30-end": { "type": "float" },
+            "40-end": { "type": "float" },
+            "50-end": { "type": "float" },
+            "60-end": { "type": "float" },
+            "70-end": { "type": "float" }
+          }
+        },
+        "damage_taken_diff_per_min_deltas": {
+         "type":"nested",
+         "properties": {
+            "0-10": { "type": "float" },
+            "10-20": { "type": "float" },
+            "20-30": { "type": "float" },
+            "30-40": { "type": "float" },
+            "40-50": { "type": "float" },
+            "50-60": { "type": "float" },
+            "60-70": { "type": "float" },
+            "10-end": { "type": "float" },
+            "20-end": { "type": "float" },
+            "30-end": { "type": "float" },
+            "40-end": { "type": "float" },
+            "50-end": { "type": "float" },
+            "60-end": { "type": "float" },
+            "70-end": { "type": "float" }
+          }
+        },
+        "damage_taken_per_min_deltas": {
+         "type":"nested",
+         "properties": {
+            "0-10": { "type": "float" },
+            "10-20": { "type": "float" },
+            "20-30": { "type": "float" },
+            "30-40": { "type": "float" },
+            "40-50": { "type": "float" },
+            "50-60": { "type": "float" },
+            "60-70": { "type": "float" },
+            "10-end": { "type": "float" },
+            "20-end": { "type": "float" },
+            "30-end": { "type": "float" },
+            "40-end": { "type": "float" },
+            "50-end": { "type": "float" },
+            "60-end": { "type": "float" },
+            "70-end": { "type": "float" }
+          }
+        },
+        "gold_per_min_deltas": {
+         "type":"nested",
+         "properties": {
+            "0-10": { "type": "float" },
+            "10-20": { "type": "float" },
+            "20-30": { "type": "float" },
+            "30-40": { "type": "float" },
+            "40-50": { "type": "float" },
+            "50-60": { "type": "float" },
+            "60-70": { "type": "float" },
+            "10-end": { "type": "float" },
+            "20-end": { "type": "float" },
+            "30-end": { "type": "float" },
+            "40-end": { "type": "float" },
+            "50-end": { "type": "float" },
+            "60-end": { "type": "float" },
+            "70-end": { "type": "float" }
+          }
+        },
+        "xp_per_min_deltas": {
+         "type":"nested",
+         "properties": {
+            "0-10": { "type": "float" },
+            "10-20": { "type": "float" },
+            "20-30": { "type": "float" },
+            "30-40": { "type": "float" },
+            "40-50": { "type": "float" },
+            "50-60": { "type": "float" },
+            "60-70": { "type": "float" },
+            "10-end": { "type": "float" },
+            "20-end": { "type": "float" },
+            "30-end": { "type": "float" },
+            "40-end": { "type": "float" },
+            "50-end": { "type": "float" },
+            "60-end": { "type": "float" },
+            "70-end": { "type": "float" }
+          }
+        },
+        "xp_diff_per_min_deltas": {
+         "type":"nested",
+         "properties": {
+            "0-10": { "type": "float" },
+            "10-20": { "type": "float" },
+            "20-30": { "type": "float" },
+            "30-40": { "type": "float" },
+            "40-50": { "type": "float" },
+            "50-60": { "type": "float" },
+            "60-70": { "type": "float" },
+            "10-end": { "type": "float" },
+            "20-end": { "type": "float" },
+            "30-end": { "type": "float" },
+            "40-end": { "type": "float" },
+            "50-end": { "type": "float" },
+            "60-end": { "type": "float" },
+            "70-end": { "type": "float" }
+          }
+        }
+      }
+    }
+  }
+}
+
+PUT /timeline_data
+{
+  "settings": {
+    "index": {
+      "number_of_shards": "10",
+      "number_of_replicas":"1",
+      "refresh_interval": "5s"
+    }
+  },
+  "mappings": {
+    "timeline":{
+      "properties": {
+        "match_id": {
+         "type":"text"
+        },
+        "frame": {
+         "type":"integer"
+        },
+        "red_top_creep_score": {
+         "type":"float"
+        },
+        "red_top_current_gold": {
+         "type":"integer"
+        },
+        "red_top_gold_earned": {
+         "type":"integer"
+        },
+        "red_top_level": {
+         "type":"integer"
+        },
+        "red_top_positionX": {
+         "type":"float"
+        },
+        "red_top_positionY": {
+         "type":"float"
+        },
+        "red_jug_creep_score": {
+         "type":"float"
+        },
+        "red_jug_current_gold": {
+         "type":"integer"
+        },
+        "red_jug_gold_earned": {
+         "type":"integer"
+        },
+        "red_jug_level": {
+         "type":"integer"
+        },
+        "red_jug_positionX": {
+         "type":"float"
+        },
+        "red_jug_positionY": {
+         "type":"float"
+        },
+        "red_mid_creep_score": {
+         "type":"float"
+        },
+        "red_mid_current_gold": {
+         "type":"integer"
+        },
+        "red_mid_gold_earned": {
+         "type":"integer"
+        },
+        "red_mid_level": {
+         "type":"integer"
+        },
+        "red_mid_positionX": {
+         "type":"float"
+        },
+        "red_mid_positionY": {
+         "type":"float"
+        },
+        "red_adc_creep_score": {
+         "type":"float"
+        },
+        "red_adc_current_gold": {
+         "type":"integer"
+        },
+        "red_adc_gold_earned": {
+         "type":"integer"
+        },
+        "red_adc_level": {
+         "type":"integer"
+        },
+        "red_adc_positionX": {
+         "type":"float"
+        },
+        "red_adc_positionY": {
+         "type":"float"
+        },
+        "red_sup_creep_score": {
+         "type":"float"
+        },
+        "red_sup_current_gold": {
+         "type":"integer"
+        },
+        "red_sup_gold_earned": {
+         "type":"integer"
+        },
+        "red_sup_level": {
+         "type":"integer"
+        },
+        "red_sup_positionX": {
+         "type":"float"
+        },
+        "red_sup_positionY": {
+         "type":"float"
+        },
+        "blue_top_creep_score": {
+         "type":"float"
+        },
+        "blue_top_current_gold": {
+         "type":"integer"
+        },
+        "blue_top_gold_earned": {
+         "type":"integer"
+        },
+        "blue_top_level": {
+         "type":"integer"
+        },
+        "blue_top_positionX": {
+         "type":"float"
+        },
+        "blue_top_positionY": {
+         "type":"float"
+        },
+        "blue_jug_creep_score": {
+         "type":"float"
+        },
+        "blue_jug_current_gold": {
+         "type":"integer"
+        },
+        "blue_jug_gold_earned": {
+         "type":"integer"
+        },
+        "blue_jug_level": {
+         "type":"integer"
+        },
+        "blue_jug_positionX": {
+         "type":"float"
+        },
+        "blue_jug_positionY": {
+         "type":"float"
+        },
+        "blue_mid_creep_score": {
+         "type":"float"
+        },
+        "blue_mid_current_gold": {
+         "type":"integer"
+        },
+        "blue_mid_gold_earned": {
+         "type":"integer"
+        },
+        "blue_mid_level": {
+         "type":"integer"
+        },
+        "blue_mid_positionX": {
+         "type":"float"
+        },
+        "blue_mid_positionY": {
+         "type":"float"
+        },
+        "blue_adc_creep_score": {
+         "type":"float"
+        },
+        "blue_adc_current_gold": {
+         "type":"integer"
+        },
+        "blue_adc_gold_earned": {
+         "type":"integer"
+        },
+        "blue_adc_level": {
+         "type":"integer"
+        },
+        "blue_adc_positionX": {
+         "type":"float"
+        },
+        "blue_adc_positionY": {
+         "type":"float"
+        },
+        "blue_sup_creep_score": {
+         "type":"float"
+        },
+        "blue_sup_current_gold": {
+         "type":"integer"
+        },
+        "blue_sup_gold_earned": {
+         "type":"integer"
+        },
+        "blue_sup_level": {
+         "type":"integer"
+        },
+        "blue_sup_positionX": {
+         "type":"float"
+        },
+        "blue_sup_positionY": {
+         "type":"float"
+        }
+      }
+    }
+  }
+}

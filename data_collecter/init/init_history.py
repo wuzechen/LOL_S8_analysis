@@ -5,7 +5,7 @@ def check_file_exists(region):
     paths = ["history/unpulled_summoner_ids_" + region + ".txt",
              "history/pulled_summoner_ids_" + region + ".txt",
              "history/unpulled_match_ids_" + region + ".txt",
-             "history/upulled_match_ids_" + region + ".txt",
+             "history/pulled_match_ids_" + region + ".txt",
              ]
     for path in paths:
         if not os.path.exists(path):

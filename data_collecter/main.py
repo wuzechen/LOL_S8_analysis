@@ -24,7 +24,7 @@ if __name__ == "__main__":
     threadJP = collecterThread(1, "夜空の三日月", "JP", "7.22")
     threadKR = collecterThread(2, "Hide on Bush", "KR", "7.22")
     threadNA = collecterThread(3, "Søren Bjerg", "NA", "7.22")
-    threadEU = collecterThread(4, "FNC Rekkles", "EU", "7.22")
+    threadEU = collecterThread(4, "FNC Rekkles", "EUW", "7.22")
 
     threadJP.start()
     threadKR.start()

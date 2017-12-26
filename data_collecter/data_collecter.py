@@ -10,6 +10,7 @@ import json
 import init.csv_header as csv_header
 import init.init_history as init
 import init.log_history as log
+import lol_info.role as role_info
 
 def filter_match_history(summoner, patch):
     end_time = datetime.datetime.now()
@@ -17,20 +18,7 @@ def filter_match_history(summoner, patch):
                                  queues={Queue.ranked_solo_fives}, begin_time=patch.start, end_time=end_time)
     return match_history
 
-def get_role(role_string):
-    if role_string == "Lane.top_laneSOLO":
-        role = "top"
-    elif role_string == "Lane.jungleNone":
-        role = "jug"
-    elif role_string == "Lane.mid_laneSOLO":
-        role = "mid"
-    elif role_string == "Lane.bot_laneRole.adc":
-        role = "adc"
-    elif role_string == "Lane.bot_laneRole.support":
-        role = "sup"
-    else:
-        role = "null"
-    return role
+
 
 def collect_matches(initial_summoner_name, region, patch):
     summoner = Summoner(name=initial_summoner_name, region=region)
@@ -106,7 +94,7 @@ def collect_matches(initial_summoner_name, region, patch):
 
             # match_player_data
             for participant in red.participants:
-                role = get_role(str(getattr(participant, "lane", "null")) + str(getattr(participant, "role", "null")))
+                role = role_info.get_role(str(getattr(participant, "lane", "null")) + str(getattr(participant, "role", "null")))
                 if role == "null":
                     continue
                 match_player_data = {"match_id": new_match_id ,"role": role, "side": "red"}
@@ -250,7 +238,7 @@ def collect_matches(initial_summoner_name, region, patch):
                         timeline_data = {}
 
             for participant in blue.participants:
-                role = get_role(str(getattr(participant, "lane", "null")) + str(getattr(participant, "role", "null")))
+                role = role_info.get_role(str(getattr(participant, "lane", "null")) + str(getattr(participant, "role", "null")))
                 if role == "null":
                     continue
                 match_player_data = {"match_id": new_match_id, "role": role, "side": "blue"}
