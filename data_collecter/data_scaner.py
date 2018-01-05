@@ -1,7 +1,10 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from data_collecter.lol_info import region as region_info
 from elasticsearch import Elasticsearch
 import certifi
-import os
 
 es = Elasticsearch(['https://0ba6135ae8b7ed9a9b63c138a33b86c7.us-west-2.aws.found.io'],
                    port=9243,

@@ -1,3 +1,7 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 import random
 import datetime
 import cassiopeia as cass
@@ -416,10 +420,3 @@ def collect_matches(initial_summoner_name, region, patch):
                                         delimiter=';', quoting=csv.QUOTE_NONE, quotechar='')
                 for index in timelines:
                     writer.writerow(timelines[index])
-
-
-if __name__ == "__main__":
-    #cass.set_riot_api_key("")  # This overrides the value set in your configuration/settings.
-    cass.apply_settings("setting.json")
-    #cass.set_default_region("JP")
-    collect_matches("Hide on Bush", "KR", "7.22")
