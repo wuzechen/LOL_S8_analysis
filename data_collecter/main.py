@@ -1,5 +1,5 @@
 import threading
-import data_collecter
+from data_collecter import collecter
 import cassiopeia as cass
 
 class collecterThread (threading.Thread):
@@ -13,7 +13,7 @@ class collecterThread (threading.Thread):
     def run(self):
         print("crate thread {0}".format(self.region))
         while True:
-            data_collecter.collect_matches(self.initial_summoner_name, self.region, self.patch)
+            collecter.collect_matches(self.initial_summoner_name, self.region, self.patch)
 
 
 
